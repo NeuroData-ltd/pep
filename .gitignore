@@ -3,3 +3,5 @@
 __pycache__
 images
 record.log
+access.log
+error.log
