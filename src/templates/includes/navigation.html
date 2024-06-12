@@ -1,0 +1,51 @@
+<div class="container position-sticky z-index-sticky top-0">
+    <div class="row">
+      <div class="col-12">
+        <nav class="navbar navbar-expand-lg  blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+          <div class="container-fluid">
+            <a class="navbar-brand  font-bolder ms-sm-3" 
+               href="http://groupeneurodata.com" rel="tooltip" title="Prepared By Neurodata Team" data-placement="bottom">
+              NEURODATA
+            </a>
+            <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon mt-2">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </span>
+            </button>
+            <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0" id="navigation">
+              <ul class="navbar-nav navbar-nav-hover  justify-content-end ms-lg-12 ps-lg-5 w-100">
+                <li class="nav-item mx-2">
+                  <a href="/" class="nav-link ps-2 fw-bold d-flex justify-content-between cursor-pointer align-items-center"  aria-expanded="false">
+                    Home
+                  </a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a href="{{ url_for('core_blueprint.documentation') }}" class="nav-link ps-2 fw-bold d-flex justify-content-between cursor-pointer align-items-center"  target="_blank" aria-expanded="false">
+                    Docs
+                  </a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a href="{{ url_for('core_blueprint.fetch_pricing') }}" class="nav-link ps-2 d-flex fw-bold justify-content-between cursor-pointer align-items-center" aria-expanded="false">
+                    Princing
+                  </a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a href="{{ url_for('core_blueprint.fetch_about') }}" class="nav-link ps-2 d-flex fw-bold justify-content-between cursor-pointer align-items-center"  aria-expanded="false">
+                    About us
+                  </a>
+                </li>
+                {%if request.endpoint == "core_blueprint.index" %}
+                <li class="nav-item my-auto ms-lg-auto">
+                  <button id="btn-demo" class="btn btn-sm  bg-gradient-dark btn-round mb-0 me-1 mt-2 mt-md-0" >Request a Demo</button>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!-- End Navbar -->
+      </div>
+    </div>
+</div>

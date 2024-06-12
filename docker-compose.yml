@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  pep_service:
+    container_name: pep_service
+    restart: always
+    env_file: .env
+    build: .
+    network_mode: "host"
+    volumes:
+      - .:/app

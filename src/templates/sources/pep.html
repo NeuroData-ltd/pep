@@ -1,0 +1,257 @@
+{% extends 'layouts/base-presentation.html' %} 
+
+{% block title %} PEP sources {% endblock title %}
+    
+    <!-- Specific CSS goes HERE -->
+    {% block stylesheets %}
+    
+    {% endblock stylesheets %} 
+    {% block body_class %} index-page {% endblock body_class %}
+    {% block content %}
+    <header class="section-height-50 page-header">
+        <div class="container mt-5">
+            <div class="rounded-2 mt-5" style="background-image: url('/static/assets/img/sources/pep-sources.webp'); background-size: 100%;" class="row">
+                    <div class="col-5 d-block py-5 ps-3" >
+                        <div class="py-3 ps-3" style="background-color: rgba(227, 227, 250, 0.696);">
+                            <h3 class="text-dark">Politically Exposed Persons lists</h2>
+                                <p>Included are Politically Exposed Persons as well as State-Owned Enterprises.</p>
+                                <button class="btn btn-secondary">TRY IT OUT !</button>
+                        </div>
+                    </div>
+            </div>
+            <div class="text-center mt-2">
+                <div class="row"><p><span><i class="bi fs-5 bi-shield-check me-4"></i></span>dilisense include Politically Exposed Persons from around the world.</p></div>
+                <div class="row"><p><span><i class="bi fs-5 bi-alarm me-4"></i></span>The data is updated once a day with the latest available information.</p></div>
+                <div class="row"><p><span><i class="bi fs-5 bi-grid-3x3-gap-fill me-4"></i></span>A consolidated format ensures consistent searchability across all lists.</p></div>
+            </div>
+            <hr>
+        </div>
+    </header>
+    <section class="mt-5">
+        <div class="container">
+            <div class="row bg-gradient-dark my-5">
+               <p class="px-5 py-4 mb-0 text-center text-white">
+                “A risk based approach is required to determine the possibility of exposure for corruption and abuse of their position by senior public functions.”
+                The Wolfsberg Group - An association of thirteen global banks which aims to develop frameworks and guidance for the management of financial crime risks
+               </p> 
+            </div>
+        <hr>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <h3 class="text-start">Core principles</h3>
+                <p>dilisense stand for three core principles that are detailed below.</p>
+            </div>
+            <div class="row">   
+                <h4 class="text-start">1. Publicly accessible data</h4>
+                <p>Our primary data source is always the official website of a data subject (for example the parliament's website of a specific country). If this is not available for any reason, we include other public sources to enable an independent PEP verification in case of a positive match. An example link collection is presented in the table below for Germany.</p>
+                <table class="table table-striped">
+                    <thead class="bg-secondary text-white">
+                        <tr>
+                          <th scope="col">Subject</th>
+                          <th scope="col">Example for Germany</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Head of state (including royal families with governing responsibilities)</td>
+                          <td>https://www.bundeskanzlerin.de</td>
+                        </tr>
+                        <tr>
+                            <td>Members of government (including deputy and assistant ministers)</td>
+                            <td>https://www.bundesregierung.de</td>
+                        </tr>
+                        <tr>
+                            <td>Members of parliament (Bundestag)</td>
+                            <td>https://www.bundestag.de</td>
+                        </tr>
+                        <tr>
+                            <td>Members of parliament (Bundesrat)</td>
+                            <td>https://www.bundesrat.de</td>
+                        </tr>
+                      </tbody>
+                </table> 
+            </div>   
+            <div class="row">
+                <h4 class="text-start">2. Holistic financial risk screening</h4>
+                <p>We don't believe in a plain "the more the better"-mentality, but in a risk-based approach of Financial Risk Screening Programs.</p>
+            </div>             
+            <div class="row p-2 bg-secondary">
+                <h4 class="text-center py-5">A holistic financial risk screening program comprises of three areas</h4>
+                <div class="row">
+                    <div class="col-4">
+                        <p class="text-center text-white"><i class="bi fs-1 bi-sign-intersection-y"></i></p>
+                        <h4 class="text-center text-white">Screening logic</h6>
+                        <p class="p-3 text-center text-white">Companies need to define CDD and EDD processes that suit their business context and geographical area. Some of the questions to be addressed are:
+                            - What PEP types are relevant for the business and for which countries?
+                            - What events trigger the screening of what PEP type (e.g. exceptional high transaction volumes, suspicious frequencies)?
+                            - What Corruption Perception Index have the countries of my customers?</p>
+                    </div>
+                    <div class="col-4 text-white border-end border-start">
+                        <p class="text-center text-white"><i class="bi fs-1 bi-person"></i></p>
+                        <h6 class="text-center text-white">
+                            Screening data
+                        </h6>
+                        <p class="p-3 text-center text-white">
+                            The quality of the input data and the screening result correlate with each other. Customer data should at least consist of the full name, the country and the date of birth. Additional data is helpful in case the name is quite common and would potentially result in many hits. As almost every hit triggers a manual verification process in the Compliance team, there is an inherent interest of avoiding false positives due to poor data quality.
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="text-center text-white"><i class="bi fs-1 bi-person-badge"></i></p>
+                        <h6 class="text-center text-white">
+                            Screening provider
+                        </h6>
+                        <p class="p-3 text-center text-white">
+                            Screening providers need to ensure
+                            High data quality:
+                            All available data needs to be provided in a unique and searchable format.
+                            Sufficient data coverage:
+                            The relevant PEP types for the relevant countries need to be covered.
+                            Suitable screening technology:
+                            Options for filtering (e.g. by date of birth or gender) as well as for fuzzy search have to be available.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <p class="text-center">For further details on a risk-based approach, we recommend reading the following article published by ACAMS: Drowning in PEPs.</p>
+            </div>
+            <div class="row">
+                <h4 class="text-start">3. Transparent data coverage</h4>
+                <p>You can independently evaluate the coverage of our PEP database in three ways:</p>
+            </div>
+            <div class="row py-5">
+                <div class="col-4"> 
+                    <div class="shadow-sm px-3 py-2 rounded-2">
+                        <div class="d-flex justify-content-start">
+                            <span class="rounded-circle me-2"><i class="bi fs-1 bi-cloud-check"></i></span>
+                            <div>
+                                <h5 class="text-dark">Free API Check</h5>
+                                <p class="text-dark">Try it By your own</p>
+                            </div>
+                        </div>
+                        <div class="text-start">
+                            <p>Our API Check product is available for you after a quick registration. You get 100 free API checks instantly, so that you can start evaluating our service today.</p>
+                        </div>
+                        <div class="text-end">
+                            <button class="btn btn-primary">REGISTER</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4"> 
+                    <div class="shadow-sm px-3 py-2 rounded-2">
+                        <div class="d-flex justify-content-start">
+                            <span class="rounded-circle me-2"><i class="bi fs-1 bi-file-arrow-down"></i></span>
+                            <div>
+                                <h5 class="text-dark">Data Paid Trial</h5>
+                                <p class="text-dark">See it by your own</p>
+                            </div>
+                        </div>
+                        <div class="text-start">
+                            <p>Download our whole database to your local environment. You can assess the list with regards to size, regions covered and see the actual individuals and entities included.</p>
+                        </div>
+                        <div class="text-end">
+                            <button class="btn btn-primary">LEARN MORE</button>
+                        </div>
+      
+                    </div>
+                </div>
+                <div class="col-4"> 
+                    <div class="shadow-sm px-3 py-2 rounded-2">
+                        <div class="d-flex justify-content-start">
+                            <span class="rounded-circle me-2"><i class="bi fs-1 bi-envelope"></i></span>
+                            <div>
+                                <h5 class="text-dark">Contact Sales</h5>
+                                <p class="text-dark">Hear it by your own.</p>
+                            </div>
+                        </div>
+                        <div class="text-start">
+                            <p>If you have a question regarding the coverage for a specific country, don't hesitate to contact us. If there is any additional PEP source you need, we will include it for you.</p>
+                        </div>
+                        <div class="text-end">
+                            <button class="btn btn-primary">CONTACT SALES</button>
+                        </div>
+      
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row pt-5">
+                <h3 class="text-start">Regulatory PEP definitions</h3>
+                <p>The following table shows dilisense's understanding of PEP regulations published by globally renowned regulatory bodies and associations.
+                    It is provided for informational purposes only. Please also refer to our Terms of Service.</p>
+            </div>
+            <div class="row">
+                <table class="table table-striped">
+                    <thead class="bg-secondary text-white">
+                        <tr>
+                          <th scope="col">Subject</th>
+                          <th scope="col">EU</th>
+                          <th scope="col">UN</th>
+                          <th scope="col">FATF</th>
+                          <th scope="col">Wolfsberg</th>
+                          <th scope="col">CH</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                            <td>Head of state (including royal families with governing responsibilities)</td>
+                            <td>Specified</td>
+                            <td>Not Specified</td>
+                            <td>Specified</td>
+                            <td>Specified</td>
+                            <td>Specified</td>
+                        </tr>
+                        <tr>
+                            <td>Members of government (including deputy and assistant ministers)</td>
+                            <td>Specified</td>
+                            <td>Not Specified</td>
+                            <td>Specified</td>
+                            <td>Specified</td>
+                            <td>Specified</td>
+                        </tr>
+                        <tr>
+                            <td>Members of parliament</td>
+                            <td>Specified</td>
+                            <td>Not Specified</td>
+                            <td>Specified</td>
+                            <td>Specified</td>
+                            <td>Specified</td>
+                        </tr>
+                        <tr>
+                            <td>Members of supreme courts or other high judicial bodies</td>
+                            <td>Specified</td>
+                            <td>Not Specified</td>
+                            <td>Specified</td>
+                            <td>Specified</td>
+                            <td>Specified</td>
+                        </tr>
+                        <tr>
+                            <td>High ranking military officials</td>
+                            <td>Specified</td>
+                            <td>Not Specified</td>
+                            <td>Specified</td>
+                            <td>Specified</td>
+                            <td>Specified</td>
+                        </tr>
+                      </tbody>
+                </table> 
+            </div>
+            
+        </div>
+    </section>
+    {% endblock content %}
+        
+    {% block javascripts %}
+    <script src="/static/assets/js/plugins/countup.min.js"></script>
+    <script src="/static/assets/js/plugins/choices.min.js"></script>
+    <script src="/static/assets/js/plugins/rellax.min.js"></script>
+    <script src="/static/assets/js/plugins/tilt.min.js"></script>
+    <script src="/static/assets/js/plugins/choices.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
+    
+    {% endblock javascripts %}
+    

@@ -1,0 +1,734 @@
+{% extends 'layouts/base-presentation.html' %} {% block title %} Presentation
+{%endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+{% endblock stylesheets %} {% block body_class %}index-page {% endblock
+body_class %} {% block content %}
+<header class="header-2">
+  <section class="my-5 py-5">
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-lg-12 shadow-sm mx-auto d-flex justify-content-center flex-column" >
+          <h3 class="text-center">Edit every person</h3>
+          <div class="row mb-2">
+            <div class="col-3">
+                <label for="firstname-entry" class="form-label">firstname</label>
+                <input id="firstname-entry" type="text" class="form-control">
+            </div>
+            <div class="col-3">
+                <label for="lastname-entry" class="form-label">lastname</label>
+                <input id="lastname-entry" type="text" class="form-control">
+            </div>
+            <div class="col-3">
+                <label for="citizenship-entry" class="form-label">citizenship</label>
+                <select name="" id="citizenship-entry" class="form-control">
+                    <option value="TN">TN</option>
+                    <option value="AX">AX</option>
+                    <option value="AL">AL</option>
+                    <option value="DZ">DZ</option>
+                    <option value="AS">AS</option>
+                    <option value="AD">AD</option>
+                    <option value="AO">AO</option>
+                    <option value="AI">AI</option>
+                    <option value="AQ">AQ</option>
+                    <option value="AG">AG</option>
+                    <option value="AR">AR</option>
+                    <option value="AM">AM</option>
+                    <option value="AW">AW</option>
+                    <option value="AU">AU</option>
+                    <option value="AT">AT</option>
+                    <option value="AZ">AZ</option>
+                    <option value="BS">BS</option>
+                    <option value="BH">BH</option>
+                    <option value="BD">BD</option>
+                    <option value="BB">BB</option>
+                    <option value="BY">BY</option>
+                    <option value="BE">BE</option>
+                    <option value="BZ">BZ</option>
+                    <option value="BJ">BJ</option>
+                    <option value="BM">BM</option>
+                    <option value="BT">BT</option>
+                    <option value="BO">BO</option>
+                    <option value="BQ">BQ</option>
+                    <option value="BA">BA</option>
+                    <option value="BW">BW</option>
+                    <option value="BV">BV</option>
+                    <option value="BR">BR</option>
+                    <option value="IO">IO</option>
+                    <option value="BN">BN</option>
+                    <option value="BG">BG</option>
+                    <option value="BF">BF</option>
+                    <option value="BI">BI</option>
+                    <option value="CV">CV</option>
+                    <option value="KH">KH</option>
+                    <option value="CM">CM</option>
+                    <option value="CA">CA</option>
+                    <option value="KY">KY</option>
+                    <option value="CF">CF</option>
+                    <option value="TD">TD</option>
+                    <option value="CL">CL</option>
+                    <option value="CN">CN</option>
+                    <option value="CX">CX</option>
+                    <option value="CC">CC</option>
+                    <option value="CO">CO</option>
+                    <option value="KM">KM</option>
+                    <option value="CG">CG</option>
+                    <option value="CD">CD</option>
+                    <option value="CK">CK</option>
+                    <option value="CR">CR</option>
+                    <option value="CI">CI</option>
+                    <option value="HR">HR</option>
+                    <option value="CU">CU</option>
+                    <option value="CW">CW</option>
+                    <option value="CY">CY</option>
+                    <option value="CZ">CZ</option>
+                    <option value="DK">DK</option>
+                    <option value="DJ">DJ</option>
+                    <option value="DM">DM</option>
+                    <option value="DO">DO</option>
+                    <option value="EC">EC</option>
+                    <option value="EG">EG</option>
+                    <option value="SV">SV</option>
+                    <option value="GQ">GQ</option>
+                    <option value="ER">ER</option>
+                    <option value="EE">EE</option>
+                    <option value="SZ">SZ</option>
+                    <option value="ET">ET</option>
+                    <option value="FK">FK</option>
+                    <option value="FO">FO</option>
+                    <option value="FJ">FJ</option>
+                    <option value="FI">FI</option>
+                    <option value="FR">FR</option>
+                    <option value="GF">GF</option>
+                    <option value="PF">PF</option>
+                    <option value="TF">TF</option>
+                    <option value="GA">GA</option>
+                    <option value="GM">GM</option>
+                    <option value="GE">GE</option>
+                    <option value="DE">DE</option>
+                    <option value="GH">GH</option>
+                    <option value="GI">GI</option>
+                    <option value="GR">GR</option>
+                    <option value="GL">GL</option>
+                    <option value="GD">GD</option>
+                    <option value="GP">GP</option>
+                    <option value="GU">GU</option>
+                    <option value="GT">GT</option>
+                    <option value="GG">GG</option>
+                    <option value="GN">GN</option>
+                    <option value="GW">GW</option>
+                    <option value="GY">GY</option>
+                    <option value="HT">HT</option>
+                    <option value="HM">HM</option>
+                    <option value="VA">VA</option>
+                    <option value="HN">HN</option>
+                    <option value="HK">HK</option>
+                    <option value="HU">HU</option>
+                    <option value="IS">IS</option>
+                    <option value="IN">IN</option>
+                    <option value="ID">ID</option>
+                    <option value="IR">IR</option>
+                    <option value="IQ">IQ</option>
+                    <option value="IE">IE</option>
+                    <option value="IM">IM</option>
+                    <option value="IL">IL</option>
+                    <option value="IT">IT</option>
+                    <option value="JM">JM</option>
+                    <option value="JP">JP</option>
+                    <option value="JE">JE</option>
+                    <option value="JO">JO</option>
+                    <option value="KZ">KZ</option>
+                    <option value="KE">KE</option>
+                    <option value="KI">KI</option>
+                    <option value="KP">KP</option>
+                    <option value="KR">KR</option>
+                    <option value="KW">KW</option>
+                    <option value="KG">KG</option>
+                    <option value="LA">LA</option>
+                    <option value="LV">LV</option>
+                    <option value="LB">LB</option>
+                    <option value="LS">LS</option>
+                    <option value="LR">LR</option>
+                    <option value="LY">LY</option>
+                    <option value="LI">LI</option>
+                    <option value="LT">LT</option>
+                    <option value="LU">LU</option>
+                    <option value="MO">MO</option>
+                    <option value="MG">MG</option>
+                    <option value="MW">MW</option>
+                    <option value="MY">MY</option>
+                    <option value="MV">MV</option>
+                    <option value="ML">ML</option>
+                    <option value="MT">MT</option>
+                    <option value="MH">MH</option>
+                    <option value="MQ">MQ</option>
+                    <option value="MR">MR</option>
+                    <option value="MU">MU</option>
+                    <option value="YT">YT</option>
+                    <option value="MX">MX</option>
+                    <option value="FM">FM</option>
+                    <option value="MD">MD</option>
+                    <option value="MC">MC</option>
+                    <option value="MN">MN</option>
+                    <option value="ME">ME</option>
+                    <option value="MS">MS</option>
+                    <option value="MA">MA</option>
+                    <option value="MZ">MZ</option>
+                    <option value="MM">MM</option>
+                    <option value="NA">NA</option>
+                    <option value="NR">NR</option>
+                    <option value="NP">NP</option>
+                    <option value="NL">NL</option>
+                    <option value="NC">NC</option>
+                    <option value="NZ">NZ</option>
+                    <option value="NI">NI</option>
+                    <option value="NE">NE</option>
+                    <option value="NG">NG</option>
+                    <option value="NU">NU</option>
+                    <option value="NF">NF</option>
+                    <option value="MK">MK</option>
+                    <option value="MP">MP</option>
+                    <option value="NO">NO</option>
+                    <option value="OM">OM</option>
+                    <option value="PK">PK</option>
+                    <option value="PW">PW</option>
+                    <option value="PS">PS</option>
+                    <option value="PA">PA</option>
+                    <option value="PG">PG</option>
+                    <option value="PY">PY</option>
+                    <option value="PE">PE</option>
+                    <option value="PH">PH</option>
+                    <option value="PN">PN</option>
+                    <option value="PL">PL</option>
+                    <option value="PT">PT</option>
+                    <option value="PR">PR</option>
+                    <option value="QA">QA</option>
+                    <option value="RE">RE</option>
+                    <option value="RO">RO</option>
+                    <option value="RU">RU</option>
+                    <option value="RW">RW</option>
+                    <option value="BL">BL</option>
+                    <option value="SH">SH</option>
+                    <option value="KN">KN</option>
+                    <option value="LC">LC</option>
+                    <option value="MF">MF</option>
+                    <option value="PM">PM</option>
+                    <option value="VC">VC</option>
+                    <option value="WS">WS</option>
+                    <option value="SM">SM</option>
+                    <option value="ST">ST</option>
+                    <option value="SA">SA</option>
+                    <option value="SN">SN</option>
+                    <option value="RS">RS</option>
+                    <option value="SC">SC</option>
+                    <option value="SL">SL</option>
+                    <option value="SG">SG</option>
+                    <option value="SX">SX</option>
+                    <option value="SK">SK</option>
+                    <option value="SI">SI</option>
+                    <option value="SB">SB</option>
+                    <option value="SO">SO</option>
+                    <option value="ZA">ZA</option>
+                    <option value="GS">GS</option>
+                    <option value="SS">SS</option>
+                    <option value="ES">ES</option>
+                    <option value="LK">LK</option>
+                    <option value="SD">SD</option>
+                    <option value="SR">SR</option>
+                    <option value="SJ">SJ</option>
+                    <option value="SE">SE</option>
+                    <option value="CH">CH</option>
+                    <option value="SY">SY</option>
+                    <option value="TW">TW</option>
+                    <option value="TJ">TJ</option>
+                    <option value="TZ">TZ</option>
+                    <option value="TH">TH</option>
+                    <option value="TL">TL</option>
+                    <option value="TG">TG</option>
+                    <option value="TK">TK</option>
+                    <option value="TO">TO</option>
+                    <option value="TT">TT</option>
+                    <option value="TR">TR</option>
+                    <option value="TM">TM</option>
+                    <option value="TC">TC</option>
+                    <option value="TV">TV</option>
+                    <option value="UG">UG</option>
+                    <option value="UA">UA</option>
+                    <option value="AE">AE</option>
+                    <option value="GB">GB</option>
+                    <option value="US">US</option>
+                    <option value="UM">UM</option>
+                    <option value="UY">UY</option>
+                    <option value="UZ">UZ</option>
+                    <option value="VU">VU</option>
+                    <option value="VE">VE</option>
+                    <option value="VN">VN</option>
+                    <option value="VG">VG</option>
+                    <option value="VI">VI</option>
+                    <option value="WF">WF</option>
+                    <option value="EH">EH</option>
+                    <option value="YE">YE</option>
+                    <option value="ZM">ZM</option>
+                    <option value="ZW">ZW</option> 
+                </select>
+            </div>
+            <div class="col-3 d-flex justify-content-center align-content-center h-50">
+                <button id="search-btn" class="btn btn-primary mb-0">Search</button>
+            </div>
+          </div>
+          <form method="post" enctype="multipart/form-data" >
+            <div class="row mb-5">
+              <div class="col-4">
+                {{ form.fullname(class="form-control form-control-lg",  placeholder="Fullname", type="text") }} 
+                <small id="pep-type" class="form-text text-muted">This field is required</small>
+              </div>
+              <div class="col-4">
+                {{ form.gender(class="form-control form-control-lg", placeholder="Gender", type="text") }}
+                <small id="pep-type" class="form-text text-muted">This field is required</small>
+              </div>
+              <div class="col-2">
+                {{ form.birthdate(class="form-control form-control-lg", placeholder="Birthdate", type="date" ) }}
+              </div>
+              <div class="col-2">
+                {{ form.birthplace(class="form-control form-control-lg", placeholder="Birthplace", type="text" ) }}
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-4">
+                {{ form.firstname(class="form-control form-control-lg",  placeholder="Firstname", type="text")  }}
+                <small id="pep-type" class="form-text text-muted">This field is required</small>
+              </div>
+              <div class="col-4">
+                {{ form.lastname(class="form-control form-control-lg", placeholder="Lastname", type="text") }}
+                <small id="pep-type" class="form-text text-muted">This field is required</small>
+              </div>
+              <div class="col-4">
+                {{ form.thirdname(class="form-control form-control-lg", placeholder="Thirdname", type="text" ) }}
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-4">
+                {{ form.addresses(class="form-control form-control-lg ", id="addresses", placeholder="Addresses") }}
+              </div>
+              <div class="col-4">
+                {{ form.children(class="form-control form-control-lg", placeholder="Children", id="children") }}
+              </div>
+              <div class="col-4">
+                {{ form.spouses(class="form-control form-control-lg", placeholder="Spouses", id="spouses") }}
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-4">
+                {{ form.positions(class="form-control form-control-lg", placeholder="Positions",id="positions") }}
+              </div>
+              <div class="col-4">
+                {{ form.occupations(class="form-control form-control-lg", placeholder="Occupations", id="occupations") }}
+              </div>
+              <div class="col-4">
+                {{ form.description(class="form-control form-control-lg", placeholder="Description", id="description") }}
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-4">
+                {{ form.entity_type(class="form-control form-control-lg", placeholder="Entity Type", type="text", required="True") }}
+                <small id="pep-type" class="form-text text-muted">This field is required</small>
+              </div>
+              <div class="col-4">
+                {{ form.citizenships(class="form-control form-control-lg", placeholder="Citizenship", id="citizenships") }}
+                <small id="pep-type" class="form-text text-muted">This field is required</small>
+              </div>
+              <div class="col-4">
+                {{ form.other_informations(class="form-control form-control-lg", id="other_informations", placeholder="Other Informations") }}
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-4">
+                {{ form.links(class="form-control form-control-lg",placeholder="links", id="links", type="text") }}
+                <small id="pep-type" class="form-text text-muted">This field is required</small>
+              </div>
+              <div class="col-4">
+                {{ form.pep_type(class="form-control form-control-lg", placeholder="pep Type", type="text", id="pep-type")  }}
+                <small id="pep-type" class="form-text text-muted">a pep can be : POLITICIAN, ECONOMIST, ...</small>
+              </div>
+              <div class="col-4">
+                {{ form.source_type(class="form-control form-control-lg",placeholder="person photo", type="txt") }}
+                <small id="pep-type" class="form-text text-muted">This field is required</small>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-4">
+                {{ form.other_names(class="form-control form-control-lg",placeholder="other names", type="text") }}
+              </div>
+              <div class="col-4">
+                {{ form.photo_link(class="form-control form-control-lg",placeholder="person photo", type="file") }}
+              </div>
+              <div class="col-4">
+                {{ form.sanction_details(class="form-control form-control-lg",placeholder="Sanction Details", type="text") }}
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="text-center">
+                <button type="submit" class="btn bg-gradient-secondary  me-2"> edit </button>
+                <a href="/add" class="btn btn-primary"> reset </a>
+              </div>
+            </div>
+          </form>
+          <div class="row">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  <div class="offset-3 text-center w-50 alert alert-success text-white font-weight-bold" role="alert">
+                    {{ messages[0] }}
+                  </div>
+                {% endif %}
+            {% endwith %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock content %}
+
+  <!-- Specific JS goes HERE -->
+  {% block javascripts %}
+
+  <script src="/static/assets/js/plugins/countup.min.js"></script>
+  <script src="/static/assets/js/plugins/choices.min.js"></script>
+  <script src="/static/assets/js/plugins/rellax.min.js"></script>
+  <script src="/static/assets/js/plugins/tilt.min.js"></script>
+  <script src="/static/assets/js/plugins/choices.min.js"></script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
+  <script
+    src="/static/assets/js/soft-design-system.min.js?v=1.0.1"
+    type="text/javascript"
+  ></script>
+  <script
+  src="https://code.jquery.com/jquery-3.6.4.min.js"
+  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+  crossorigin="anonymous"
+></script>
+  <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+
+  <script>
+    const multiInputs = ["addresses", "other_informations", "other_names", "occupations","positions","links","spouses","children"]
+    multiInputs.forEach((item) => {
+        new Tagify(document.querySelector(`#${item}`))
+    })
+
+    // initialize Tagify on the above input node reference
+    var input = document.querySelector('#citizenships'),
+    
+    // init Tagify script on the above inputs
+    tagify = new Tagify(input, {
+      whitelist: [
+      "AX",
+      "AL",
+      "DZ",
+      "AS",
+      "AD",
+      "AO",
+      "AI",
+      "AQ",
+      "AG",
+      "AR",
+      "AM",
+      "AW",
+      "AU",
+      "AT",
+      "AZ",
+      "BS",
+      "BH",
+      "BD",
+      "BB",
+      "BY",
+      "BE",
+      "BZ",
+      "BJ",
+      "BM",
+      "BT",
+      "BO",
+      "BQ",
+      "BA",
+      "BW",
+      "BV",
+      "BR",
+      "IO",
+      "BN",
+      "BG",
+      "BF",
+      "BI",
+      "CV",
+      "KH",
+      "CM",
+      "CA",
+      "KY",
+      "CF",
+      "TD",
+      "CL",
+      "CN",
+      "CX",
+      "CC",
+      "CO",
+      "KM",
+      "CG",
+      "CD",
+      "CK",
+      "CR",
+      "CI",
+      "HR",
+      "CU",
+      "CW",
+      "CY",
+      "CZ",
+      "DK",
+      "DJ",
+      "DM",
+      "DO",
+      "EC",
+      "EG",
+      "SV",
+      "GQ",
+      "ER",
+      "EE",
+      "SZ",
+      "ET",
+      "FK",
+      "FO",
+      "FJ",
+      "FI",
+      "FR",
+      "GF",
+      "PF",
+      "TF",
+      "GA",
+      "GM",
+      "GE",
+      "DE",
+      "GH",
+      "GI",
+      "GR",
+      "GL",
+      "GD",
+      "GP",
+      "GU",
+      "GT",
+      "GG",
+      "GN",
+      "GW",
+      "GY",
+      "HT",
+      "HM",
+      "VA",
+      "HN",
+      "HK",
+      "HU",
+      "IS",
+      "IN",
+      "ID",
+      "IR",
+      "IQ",
+      "IE",
+      "IM",
+      "IL",
+      "IT",
+      "JM",
+      "JP",
+      "JE",
+      "JO",
+      "KZ",
+      "KE",
+      "KI",
+      "KP",
+      "KR",
+      "KW",
+      "KG",
+      "LA",
+      "LV",
+      "LB",
+      "LS",
+      "LR",
+      "LY",
+      "LI",
+      "LT",
+      "LU",
+      "MO",
+      "MG",
+      "MW",
+      "MY",
+      "MV",
+      "ML",
+      "MT",
+      "MH",
+      "MQ",
+      "MR",
+      "MU",
+      "YT",
+      "MX",
+      "FM",
+      "MD",
+      "MC",
+      "MN",
+      "ME",
+      "MS",
+      "MA",
+      "MZ",
+      "MM",
+      "NA",
+      "NR",
+      "NP",
+      "NL",
+      "NC",
+      "NZ",
+      "NI",
+      "NE",
+      "NG",
+      "NU",
+      "NF",
+      "MK",
+      "MP",
+      "NO",
+      "OM",
+      "PK",
+      "PW",
+      "PS",
+      "PA",
+      "PG",
+      "PY",
+      "PE",
+      "PH",
+      "PN",
+      "PL",
+      "PT",
+      "PR",
+      "QA",
+      "RE",
+      "RO",
+      "RU",
+      "RW",
+      "BL",
+      "SH",
+      "KN",
+      "LC",
+      "MF",
+      "PM",
+      "VC",
+      "WS",
+      "SM",
+      "ST",
+      "SA",
+      "SN",
+      "RS",
+      "SC",
+      "SL",
+      "SG",
+      "SX",
+      "SK",
+      "SI",
+      "SB",
+      "SO",
+      "ZA",
+      "GS",
+      "SS",
+      "ES",
+      "LK",
+      "SD",
+      "SR",
+      "SJ",
+      "SE",
+      "CH",
+      "SY",
+      "TW",
+      "TJ",
+      "TZ",
+      "TH",
+      "TL",
+      "TG",
+      "TK",
+      "TO",
+      "TT",
+      "TN",
+      "TR",
+      "TM",
+      "TC",
+      "TV",
+      "UG",
+      "UA",
+      "AE",
+      "GB",
+      "US",
+      "UM",
+      "UY",
+      "UZ",
+      "VU",
+      "VE",
+      "VN",
+      "VG",
+      "VI",
+      "WF",
+      "EH",
+      "YE",
+      "ZM",
+      "ZW"
+      ],
+      maxTags: 10,
+      dropdown: {
+        maxItems: 20,           // <- mixumum allowed rendered suggestions
+        classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+        enabled: 0,             // <- show suggestions on focus
+        closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+      }
+    })
+  
+  </script>
+  <script type="text/javascript">
+    if (document.getElementById("state1")) {
+      const countUp = new CountUp(
+        "state1",
+        document.getElementById("state1").getAttribute("countTo")
+      );
+      if (!countUp.error) {
+        countUp.start();
+      } else {
+        console.error(countUp.error);
+      }
+    }
+    if (document.getElementById("state2")) {
+      const countUp1 = new CountUp(
+        "state2",
+        document.getElementById("state2").getAttribute("countTo")
+      );
+      if (!countUp1.error) {
+        countUp1.start();
+      } else {
+        console.error(countUp1.error);
+      }
+    }
+    if (document.getElementById("state3")) {
+      const countUp2 = new CountUp(
+        "state3",
+        document.getElementById("state3").getAttribute("countTo")
+      );
+      if (!countUp2.error) {
+        countUp2.start();
+      } else {
+        console.error(countUp2.error);
+      }
+    }
+  </script>
+  <script>
+    $(document).ready(() => {
+        $("#search-btn").on('click', () => {
+            let lastname = $("#lastname-entry").val()
+            let firstname = $("#firstname-entry").val()
+            let citizenship = $("#citizenship-entry").val()
+            let url = `/edit?lastname=${lastname}&firstname=${firstname}&?citizenship=${citizenship}`
+            window.location.href = url
+        })
+    })
+  </script>
+  {% endblock javascripts %}
+</header>

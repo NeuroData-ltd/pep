@@ -1,0 +1,64 @@
+{% extends 'layouts/base-presentation.html' %} {% block title %} Presentation {%
+    endblock title %}
+    
+    <!-- Specific CSS goes HERE -->
+    {% block stylesheets %}
+    
+    {% endblock stylesheets %} {% block body_class %} index-page {% endblock body_class %}
+    {% block content %}
+    <!-- -------- START Features w/ icons and text on left & gradient title and text on right -------- -->
+    <div style="height:25vh"></div>
+    <div class="container">
+      <div class="row py-4">
+        <div class="col-lg-6">
+          <h3 class="text-gradient text-primary mb-0 mt-2">Read More About Us</h3>
+          <h3>The most important</h3>
+          <p>NEURODATA launched to create and scale AI solutions by leveraging deep expertise and a common machine learning platform. Through meaningful engagement and collaboration, NEURODATA partners with companies to build and operationalise impactful end-to-end AI solutions across a wide variety of industries and use cases.</p>
+          <a href="http://groupeneurodata.com/about" class="text-primary icon-move-right">More about us
+            <i class="fas fa-arrow-right text-sm ms-1"></i>
+          </a>
+        </div>
+        <div class="col-lg-6 mt-lg-0 mt-5 ps-lg-0 ps-0">
+          <div class="p-3 info-horizontal">
+            <div class="icon icon-shape rounded-circle bg-gradient-primary shadow text-center">
+              <i class="fas fa-globe opacity-10"></i>
+            </div>
+            <div class="description ps-3">
+              <p class="mb-0">Respect, free speech, and freedom inspire our commitment <br> to diversity and inclusion</p>
+            </div>
+          </div>
+          <div class="p-3 info-horizontal">
+            <div class="icon icon-shape rounded-circle bg-gradient-primary shadow text-center">
+              <i class="fas fa-handshake opacity-10"></i>
+            </div>
+            <div class="description ps-3">
+              <p class="mb-0">No matter the circumstances, our team's strength lies in <br> our ability to trust one another.</p>
+            </div>
+          </div>
+          <div class="p-3 info-horizontal">
+            <div class="icon icon-shape rounded-circle bg-gradient-primary shadow text-center">
+              <i class="fas fa-lightbulb opacity-10"></i>
+            </div>
+            <div class="description ps-3">
+              <p class="mb-0">Our new value requires us to elevate our thinking <br>to live it every day.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- -------- END Features w/ icons and text on left & gradient title and text on right -------- -->
+    {% endblock content %}
+    
+    <!-- Specific JS goes HERE -->
+    {% block javascripts %}
+    
+    <script src="/static/assets/js/plugins/countup.min.js"></script>
+    <script src="/static/assets/js/plugins/choices.min.js"></script>
+    <script src="/static/assets/js/plugins/rellax.min.js"></script>
+    <script src="/static/assets/js/plugins/tilt.min.js"></script>
+    <script src="/static/assets/js/plugins/choices.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
+    
+    {% endblock javascripts %}
+    

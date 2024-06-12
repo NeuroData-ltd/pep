@@ -1,0 +1,195 @@
+{
+    "persons": {
+        "aliases": {},
+        "mappings": {
+            "person": {
+                "properties": {
+                    "begin_date": {
+                        "type": "date",
+                        "format": "yyyy-MM-dd"
+                    },
+                    "birth_date": {
+                        "type": "nested",
+                        "properties": {
+                            "birth_date": {
+                                "type": "date",
+                                "format": "yyyy-MM-dd"
+                            },
+                            "birth_id": {
+                                "type": "long"
+                            },
+                            "exact_date": {
+                                "type": "boolean"
+                            },
+                            "interval_max_date": {
+                                "type": "date",
+                                "format": "yyyy-MM-dd"
+                            },
+                            "interval_min_date": {
+                                "type": "date",
+                                "format": "yyyy-MM-dd"
+                            }
+                        }
+                    },
+                    "deceased": {
+                        "type": "text"
+                    },
+                    "end_date": {
+                        "type": "date",
+                        "format": "yyyy-MM-dd"
+                    },
+                    "gender": {
+                        "type": "text"
+                    },
+                    "list_name": {
+                        "type": "text"
+                    },
+                    "name": {
+                        "type": "nested",
+                        "properties": {
+                            "first_name": {
+                                "type": "text",
+                                "fields": {
+                                    "ngarmField": {
+                                        "type": "text",
+                                        "analyzer": "ngram_tockenizer"
+                                    },
+                                    "synonyms": {
+                                        "type": "text",
+                                        "analyzer": "synonym"
+                                    }
+                                }
+                            },
+                            "last_name": {
+                                "type": "text",
+                                "fields": {
+                                    "ngarmField": {
+                                        "type": "text",
+                                        "analyzer": "ngram_tockenizer"
+                                    },
+                                    "synonyms": {
+                                        "type": "text",
+                                        "analyzer": "synonym"
+                                    }
+                                }
+                            },
+                            "name_id": {
+                                "type": "long"
+                            },
+                            "original_script_name": {
+                                "type": "text",
+                                "fields": {
+                                    "ngarmField": {
+                                        "type": "text",
+                                        "analyzer": "ngram_tockenizer"
+                                    }
+                                }
+                            },
+                            "whole_name": {
+                                "type": "text",
+                                "fields": {
+                                    "ngarmField": {
+                                        "type": "text",
+                                        "analyzer": "ngram_tockenizer"
+                                    },
+                                    "synonyms": {
+                                        "type": "text",
+                                        "analyzer": "synonym"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "nationality": {
+                        "type": "nested",
+                        "properties": {
+                            "country": {
+                                "type": "text"
+                            },
+                            "nationality_id": {
+                                "type": "long"
+                            }
+                        }
+                    },
+                    "person_id": {
+                        "type": "long"
+                    },
+                    "person_type": {
+                        "type": "text"
+                    }
+                }
+            }
+        },
+        "settings": {
+            "index": {
+                "refresh_interval": "30s",
+                "number_of_shards": "5",
+                "provided_name": "persons",
+                "creation_date": "1676564302243",
+                "analysis": {
+                    "filter": {
+                        "dictionary_decompounder": {
+                            "type": "dictionary_decompounder",
+                            "word_list": [
+                                "bin",
+                                "ben",
+                                "bent",
+                                "ibn"
+                            ]
+                        },
+                        "synonym": {
+                            "type": "synonym",
+                            "synonyms_path": "synonyms.txt"
+                        }
+                    },
+                    "char_filter": {
+                        "remove_space_filter": {
+                            "pattern": " ",
+                            "type": "pattern_replace",
+                            "replacement": ""
+                        }
+                    },
+                    "analyzer": {
+                        "ngram_tockenizer_search": {
+                            "tokenizer": "lowercase"
+                        },
+                        "synonym": {
+                            "filter": [
+                                "dictionary_decompounder",
+                                "synonym"
+                            ],
+                            "tokenizer": "whitespace"
+                        },
+                        "ngram_tockenizer": {
+                            "filter": [
+                                "lowercase",
+                                "dictionary_decompounder",
+                                "synonym"
+                            ],
+                            "char_filter": [
+                                "remove_space_filter"
+                            ],
+                            "tokenizer": "ngram_tockenizer"
+                        }
+                    },
+                    "tokenizer": {
+                        "ngram_tockenizer": {
+                            "token_chars": [
+                                "letter",
+                                "digit"
+                            ],
+                            "min_gram": "2",
+                            "type": "ngram",
+                            "max_gram": "3"
+                        }
+                    }
+                },
+                "number_of_replicas": "0",
+                "uuid": "l6PSP9LXRJmyTEXfjCg1Xg",
+                "version": {
+                    "created": "6030099"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,819 @@
+{% extends 'layouts/base-presentation.html' %} {% block title %} Presentation {%
+endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+
+{% endblock stylesheets %} {% block body_class %} index-page {% endblock
+body_class %} {% block content %}
+<style>
+  .person-avatar {
+    border-radius: 50%;
+    filter: grayscale(50%);
+  }
+
+  *:focus {
+    outline: none;
+  }
+</style>
+<header>
+  <div class="page-header section-height-50">
+    <div class="container p-0 rounded-2">
+      <div class="row mb-5 mt-5 pt-5 pb-5">
+        <h2 class="text-center text-dark mb-3">
+          NEURODATA sanction checks and PEP screenings
+        </h2>
+        <h5 class="text-center text-dark fw-light">
+          Perform your sanction checks and PEP screenings by accessing a myriad
+          of <br />
+          official government sources from around the globe.
+        </h5>
+      </div>
+      <div class="row">
+        <div class="col-lg-7 text-center mx-auto">
+          <div class="row mx-5">
+            <div class="input-group shadow-sm p-0 mb-4">
+              <input id="fullname" class="form-control fs-4 border-secondary border-top border-bottom border-left w-50"
+                placeholder="search for a person or a company" type="text" required />
+              <button id="basic-addon"
+                class="btn input-group-text m-0 fs-4 border-secondary border-right border-bottom border-top">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                </svg>
+              </button>
+              <!-- <span
+                class="input-group-text fs-4 border-secondary border-right border-bottom border-top"
+                id="basic-addon2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  class="bi bi-search"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                  />
+                </svg>
+              </span> -->
+            </div>
+          </div>
+          <div class="d-flex justify-content-evenly">
+            <div class="text-start">
+              <label class="text-dark" style="font-size: 0.7rem">Citizenship</label>
+              <div class="input-group" style="font-size: 0.7rem">
+                <select id="citizenship" class="form-control p-1" placeholder="" style="font-size: 0.7rem">
+                  <option value="TN">TN</option>
+                  <option value="AX">AX</option>
+                  <option value="AL">AL</option>
+                  <option value="DZ">DZ</option>
+                  <option value="AS">AS</option>
+                  <option value="AD">AD</option>
+                  <option value="AO">AO</option>
+                  <option value="AI">AI</option>
+                  <option value="AQ">AQ</option>
+                  <option value="AG">AG</option>
+                  <option value="AR">AR</option>
+                  <option value="AM">AM</option>
+                  <option value="AW">AW</option>
+                  <option value="AU">AU</option>
+                  <option value="AT">AT</option>
+                  <option value="AZ">AZ</option>
+                  <option value="BS">BS</option>
+                  <option value="BH">BH</option>
+                  <option value="BD">BD</option>
+                  <option value="BB">BB</option>
+                  <option value="BY">BY</option>
+                  <option value="BE">BE</option>
+                  <option value="BZ">BZ</option>
+                  <option value="BJ">BJ</option>
+                  <option value="BM">BM</option>
+                  <option value="BT">BT</option>
+                  <option value="BO">BO</option>
+                  <option value="BQ">BQ</option>
+                  <option value="BA">BA</option>
+                  <option value="BW">BW</option>
+                  <option value="BV">BV</option>
+                  <option value="BR">BR</option>
+                  <option value="IO">IO</option>
+                  <option value="BN">BN</option>
+                  <option value="BG">BG</option>
+                  <option value="BF">BF</option>
+                  <option value="BI">BI</option>
+                  <option value="CV">CV</option>
+                  <option value="KH">KH</option>
+                  <option value="CM">CM</option>
+                  <option value="CA">CA</option>
+                  <option value="KY">KY</option>
+                  <option value="CF">CF</option>
+                  <option value="TD">TD</option>
+                  <option value="CL">CL</option>
+                  <option value="CN">CN</option>
+                  <option value="CX">CX</option>
+                  <option value="CC">CC</option>
+                  <option value="CO">CO</option>
+                  <option value="KM">KM</option>
+                  <option value="CG">CG</option>
+                  <option value="CD">CD</option>
+                  <option value="CK">CK</option>
+                  <option value="CR">CR</option>
+                  <option value="CI">CI</option>
+                  <option value="HR">HR</option>
+                  <option value="CU">CU</option>
+                  <option value="CW">CW</option>
+                  <option value="CY">CY</option>
+                  <option value="CZ">CZ</option>
+                  <option value="DK">DK</option>
+                  <option value="DJ">DJ</option>
+                  <option value="DM">DM</option>
+                  <option value="DO">DO</option>
+                  <option value="EC">EC</option>
+                  <option value="EG">EG</option>
+                  <option value="SV">SV</option>
+                  <option value="GQ">GQ</option>
+                  <option value="ER">ER</option>
+                  <option value="EE">EE</option>
+                  <option value="SZ">SZ</option>
+                  <option value="ET">ET</option>
+                  <option value="FK">FK</option>
+                  <option value="FO">FO</option>
+                  <option value="FJ">FJ</option>
+                  <option value="FI">FI</option>
+                  <option value="FR">FR</option>
+                  <option value="GF">GF</option>
+                  <option value="PF">PF</option>
+                  <option value="TF">TF</option>
+                  <option value="GA">GA</option>
+                  <option value="GM">GM</option>
+                  <option value="GE">GE</option>
+                  <option value="DE">DE</option>
+                  <option value="GH">GH</option>
+                  <option value="GI">GI</option>
+                  <option value="GR">GR</option>
+                  <option value="GL">GL</option>
+                  <option value="GD">GD</option>
+                  <option value="GP">GP</option>
+                  <option value="GU">GU</option>
+                  <option value="GT">GT</option>
+                  <option value="GG">GG</option>
+                  <option value="GN">GN</option>
+                  <option value="GW">GW</option>
+                  <option value="GY">GY</option>
+                  <option value="HT">HT</option>
+                  <option value="HM">HM</option>
+                  <option value="VA">VA</option>
+                  <option value="HN">HN</option>
+                  <option value="HK">HK</option>
+                  <option value="HU">HU</option>
+                  <option value="IS">IS</option>
+                  <option value="IN">IN</option>
+                  <option value="ID">ID</option>
+                  <option value="IR">IR</option>
+                  <option value="IQ">IQ</option>
+                  <option value="IE">IE</option>
+                  <option value="IM">IM</option>
+                  <option value="IL">IL</option>
+                  <option value="IT">IT</option>
+                  <option value="JM">JM</option>
+                  <option value="JP">JP</option>
+                  <option value="JE">JE</option>
+                  <option value="JO">JO</option>
+                  <option value="KZ">KZ</option>
+                  <option value="KE">KE</option>
+                  <option value="KI">KI</option>
+                  <option value="KP">KP</option>
+                  <option value="KR">KR</option>
+                  <option value="KW">KW</option>
+                  <option value="KG">KG</option>
+                  <option value="LA">LA</option>
+                  <option value="LV">LV</option>
+                  <option value="LB">LB</option>
+                  <option value="LS">LS</option>
+                  <option value="LR">LR</option>
+                  <option value="LY">LY</option>
+                  <option value="LI">LI</option>
+                  <option value="LT">LT</option>
+                  <option value="LU">LU</option>
+                  <option value="MO">MO</option>
+                  <option value="MG">MG</option>
+                  <option value="MW">MW</option>
+                  <option value="MY">MY</option>
+                  <option value="MV">MV</option>
+                  <option value="ML">ML</option>
+                  <option value="MT">MT</option>
+                  <option value="MH">MH</option>
+                  <option value="MQ">MQ</option>
+                  <option value="MR">MR</option>
+                  <option value="MU">MU</option>
+                  <option value="YT">YT</option>
+                  <option value="MX">MX</option>
+                  <option value="FM">FM</option>
+                  <option value="MD">MD</option>
+                  <option value="MC">MC</option>
+                  <option value="MN">MN</option>
+                  <option value="ME">ME</option>
+                  <option value="MS">MS</option>
+                  <option value="MA">MA</option>
+                  <option value="MZ">MZ</option>
+                  <option value="MM">MM</option>
+                  <option value="NA">NA</option>
+                  <option value="NR">NR</option>
+                  <option value="NP">NP</option>
+                  <option value="NL">NL</option>
+                  <option value="NC">NC</option>
+                  <option value="NZ">NZ</option>
+                  <option value="NI">NI</option>
+                  <option value="NE">NE</option>
+                  <option value="NG">NG</option>
+                  <option value="NU">NU</option>
+                  <option value="NF">NF</option>
+                  <option value="MK">MK</option>
+                  <option value="MP">MP</option>
+                  <option value="NO">NO</option>
+                  <option value="OM">OM</option>
+                  <option value="PK">PK</option>
+                  <option value="PW">PW</option>
+                  <option value="PS">PS</option>
+                  <option value="PA">PA</option>
+                  <option value="PG">PG</option>
+                  <option value="PY">PY</option>
+                  <option value="PE">PE</option>
+                  <option value="PH">PH</option>
+                  <option value="PN">PN</option>
+                  <option value="PL">PL</option>
+                  <option value="PT">PT</option>
+                  <option value="PR">PR</option>
+                  <option value="QA">QA</option>
+                  <option value="RE">RE</option>
+                  <option value="RO">RO</option>
+                  <option value="RU">RU</option>
+                  <option value="RW">RW</option>
+                  <option value="BL">BL</option>
+                  <option value="SH">SH</option>
+                  <option value="KN">KN</option>
+                  <option value="LC">LC</option>
+                  <option value="MF">MF</option>
+                  <option value="PM">PM</option>
+                  <option value="VC">VC</option>
+                  <option value="WS">WS</option>
+                  <option value="SM">SM</option>
+                  <option value="ST">ST</option>
+                  <option value="SA">SA</option>
+                  <option value="SN">SN</option>
+                  <option value="RS">RS</option>
+                  <option value="SC">SC</option>
+                  <option value="SL">SL</option>
+                  <option value="SG">SG</option>
+                  <option value="SX">SX</option>
+                  <option value="SK">SK</option>
+                  <option value="SI">SI</option>
+                  <option value="SB">SB</option>
+                  <option value="SO">SO</option>
+                  <option value="ZA">ZA</option>
+                  <option value="GS">GS</option>
+                  <option value="SS">SS</option>
+                  <option value="ES">ES</option>
+                  <option value="LK">LK</option>
+                  <option value="SD">SD</option>
+                  <option value="SR">SR</option>
+                  <option value="SJ">SJ</option>
+                  <option value="SE">SE</option>
+                  <option value="CH">CH</option>
+                  <option value="SY">SY</option>
+                  <option value="TW">TW</option>
+                  <option value="TJ">TJ</option>
+                  <option value="TZ">TZ</option>
+                  <option value="TH">TH</option>
+                  <option value="TL">TL</option>
+                  <option value="TG">TG</option>
+                  <option value="TK">TK</option>
+                  <option value="TO">TO</option>
+                  <option value="TT">TT</option>
+                  <option value="TR">TR</option>
+                  <option value="TM">TM</option>
+                  <option value="TC">TC</option>
+                  <option value="TV">TV</option>
+                  <option value="UG">UG</option>
+                  <option value="UA">UA</option>
+                  <option value="AE">AE</option>
+                  <option value="GB">GB</option>
+                  <option value="US">US</option>
+                  <option value="UM">UM</option>
+                  <option value="UY">UY</option>
+                  <option value="UZ">UZ</option>
+                  <option value="VU">VU</option>
+                  <option value="VE">VE</option>
+                  <option value="VN">VN</option>
+                  <option value="VG">VG</option>
+                  <option value="VI">VI</option>
+                  <option value="WF">WF</option>
+                  <option value="EH">EH</option>
+                  <option value="YE">YE</option>
+                  <option value="ZM">ZM</option>
+                  <option value="ZW">ZW</option>
+                </select>
+              </div>
+            </div>
+            <div class="text-start">
+              <label class="text-dark text-start" style="font-size: 0.7rem">Birthday</label>
+              <div class="input-group" style="font-size: 0.7rem">
+                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                <input id="birthday" class="form-control datepicker p-1" placeholder="Please select date" type="text"
+                  style="font-size: 0.7rem" required />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </div>
+  </div>
+</header>
+<section id="box">
+  <div class="container p-0">
+    <div class="row">
+      <div id="result-container" class="col-12 col-xl-8 p-2 text-center"></div>
+      <div class="col-12 col-xl-4 p-2">
+        <div id="small-cards-container" class="row h-100"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container p-5">
+    <h2 class="text-center"> Unlock Exclusive Content! </h2>
+    <h5 class="fw-light text-center mb-5">Leave Your Email and Get a Free Sample from Our Database</h5>
+    <div class="d-flex justify-content-evenly flex-wrap">
+      <div>
+        <label for="email-input" class="form-label"> email </label>
+        <input id="email-input" type="text" class="form-control">
+      </div>
+      <div class="mt-4">
+        <button id="sample-link" class="btn btn-primary disabled"> Download A sample now </button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="mt-5 mb-1">
+  <div class="container">
+    <div class="row">
+      <div class="row justify-content-center text-center my-sm-5">
+        <div class="col-lg-6">
+          <h2 class="text-dark mb-0">Join our client base from</h2>
+          <h2 class="text-primary text-gradient">diverse industries</h2>
+          <p class="lead">
+            Benefit from our team expertise today and take advantage of our
+            extensive knowledge and experience in the industry
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="mb-5 py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="info-horizontal bg-gray-100 border-radius-xl p-5">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-globe"
+              viewBox="0 0 16 16">
+              <path
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z" />
+            </svg>
+          </div>
+          <div class="description ps-4">
+            <h5>Global sanction and PEP checks</h5>
+            <p>
+              Get access to all major global sanctions and PEP (politically
+              exposed persons) lists from EMEA, APAC, and the Americas. This
+              minimizes false positives and eliminates duplicate entries by
+              selecting the most important lists.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 px-lg-1 mt-lg-0 mt-4">
+        <div class="info-horizontal bg-gray-100 border-radius-xl p-5">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-send"
+              viewBox="0 0 16 16">
+              <path
+                d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
+            </svg>
+          </div>
+          <div class="description ps-5">
+            <h5>Free and non-binding trial period</h5>
+            <p>
+              All of our products offer a free trial period so you can see the
+              benefits we can provide for you and your stakeholders. Our quality
+              and performance can give you confidence and assurance when
+              integrating our products.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mt-lg-0 mt-4">
+        <div class="info-horizontal bg-gray-100 border-radius-xl p-5">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-credit-card"
+              viewBox="0 0 16 16">
+              <path
+                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
+              <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
+            </svg>
+          </div>
+          <div class="description ps-5">
+            <h5>Bespoke pricing options are available</h5>
+            <p>
+              allowing you to pay only for what you use on lower volumes. For
+              higher volumes, we offer significant discounts that take into
+              account factors such as your industry, jurisdiction, and business
+              maturity
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog w-100">
+    <div class="modal-content">
+      <form id="modal-form" action="" class="m-0 p-0">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="modalLabel">
+            Free Trial Token Policy
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-start">
+            <i class="bi bi-chevron-right fw-bold"></i> By requesting a free
+            trial API key, you agree to our terms and conditions.<br />
+            <i class="bi bi-chevron-right fw-bold"></i> The API key is
+            restricted to only 200 requests and valid for a limited time period,
+            it will expire automatically .<br />
+            <i class="bi bi-chevron-right fw-bold"></i> This API key is intended
+            for evaluation purposes only and should not be used in a production
+            environment.<br />
+            <i class="bi bi-chevron-right fw-bold"></i> you must confirm your
+            account on
+            <span>
+              <a href="http://app.groupeneurodata.com/" class="text-underline">Our API Hub</a>
+            </span>
+            to activate your API key
+          </p>
+          <p class="fw-bold">
+            By clicking the 'confirm' button, you acknowledge and accept these
+            terms.
+          </p>
+          <div class="row p-2">
+            <label for="email-input" class="form-label">Email:</label>
+            <input type="email" name="email" class="form-control" required />
+          </div>
+        </div>
+        <div class="modal-footer d-block">
+          <div class="d-flex justify-content-between">
+            <button type="button" class="btn bg-gradient-dark" data-bs-dismiss="modal">
+              Annulate
+            </button>
+            <button type="submit" class="btn btn-confirm bg-gradient-primary">
+              Confirm
+            </button>
+          </div>
+          <div id="loader" class="text-center m-0">
+            <img width="50px" src="/static/assets/img/loading-spinner.gif" alt="loader" />
+          </div>
+          <div class="alert text-center" id="result-container"></div>
+          <div id="token-container" class="row">
+            <div class="w-100">
+              <strong>API-Key : </strong>
+              <p class="overflow-auto" id="token"></p>
+            </div>
+          </div>
+          <div class="text-end">
+            <button id="btn" class="btn" data-clipboard-target="#token">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard"
+                viewBox="0 0 16 16">
+                <path
+                  d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path
+                  d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+<script id="main-card-template" type="text/template">
+  <div
+          class="card pt-0 text-start text-white m-2"
+          style="max-width: 860px; background-color: #104161;transition-timing-function: linear"
+        >
+          <div class="row g-0">
+            <div class="col-md-4">
+              <div class="d-flex py-2 justify-content-center">
+                <img height="150 rem" width="150 rem" class="my-auto person-avatar" src="{{ "{{ photo_link }}" }}" alt="">
+              </div>
+              <div class="row ps-4 mt-2 text-start">
+                <p class="m-1">
+                  <span class="pe-2"
+                    ><i class="bi fs-5 bi-globe-europe-africa"></i></span
+                  >Citizenship: {{ "{{ citizenships }}" }}
+                </p>
+                <p class="m-1">
+                  <span class="pe-2"
+                    ><i class="bi fs-5 bi-calendar-date"></i></span
+                  >Birthdate: {{ "{{ birthdate }}" }}
+                </p>
+                <p class="m-1">
+                  <span class="pe-2"><i class="bi fs-5 bi-person"></i></span
+                  >Gender: {{ "{{ gender }}" }}
+                </p>
+                <p class="m-1">
+                  <span class="pe-2"><i class="bi fs-5 bi-people"></i></span>Type:
+                  {{ "{{ sanction_list_type }}" }}
+                </p>
+                <p class="m-1">
+                  <span class="pe-2"><i class="bi fs-5 bi-grid-fill"></i></span
+                  >Category: {{ "{{ source_type }}" }}
+                </p>
+                <p class="m-1"></p>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body h-75">
+                <div class="offset-7 p-0">
+                  <div class="text-end">
+                    <span class="border border-1 p-1 rounded-3 text-white" style="color: #104161; border-color: #104161">{{ "{{ entity_type }}" }}</span>
+                  </div>
+                </div>
+                <h5 class="card-title text-white mb-4">{{ "{{ fullname }}" }}</h5>
+                <div class="d-flex h-100 py-4 flex-column justify-content-around">
+                  <div >
+                    <p class="card-text">
+                      {{ "{{ description }}" }}
+                    </p>
+                  </div>
+                  <div class="row">
+                    <div class="col-6 h-100">
+                      <h5 class="card-title text-white ms-4 mb-4">Occupations</h5>
+                      {{ "{{#occupations.length}}" }}
+                      {{"{{/occupations.length}}"}}
+                      {{ "{{#occupations.length}}" }}
+                        {{"{{#occupations}}"}}
+                        <p class="ps-4">
+                          <i class="bi bi-briefcase-fill me-2"></i>{{"{{ . }}"}}
+                        </p>
+                      {{"{{/occupations}}"}}
+                      {{ "{{/occupations.length}}" }}
+                    </div>
+                  </div>
+                  
+                </div>
+                <p class="text-end position-absolute bottom-0 end-0 me-3 mb-3">
+                  <div>
+                    {{ "{{#links.length}}" }}
+                      {{"{{/links.length}}"}}
+                      {{ "{{#links.length}}" }}
+                        {{"{{#links}}"}}
+                        <a target="_blank" href="{{"{{ . }}"}}" class="text-white">View Link</a
+                      {{"{{/links}}"}}
+                    {{ "{{/links.length}}" }}
+                    </div>
+                </p>
+            </div>
+
+                </div>
+          </div>
+        </div>
+</script>
+<script id="sm-card-template" type="text/template">
+  <div class="col-6 my-auto p-2">
+    <div class="card h-100" style="max-width: 540px; background-color: #104161;">
+    <div class="row g-0 h-100">
+      <div class="card-body h-100 p-3">
+        <div style="float: left" class="fs-1 me-3">
+          <i class="bi bi-person-fill text-white"></i>
+        </div>
+        <h5 class="card-title text-white">{{ "{{ fullname }}" }}</h5>
+        <p class="card-text text-end">
+          <button class="btn btn-primary sm-card" data-key="{{"{{key}}"}}">show</button>
+        </p>
+      </div>
+    </div>
+  </div>
+  </div>
+</script>
+
+<script src="/static/assets/js/plugins/countup.min.js"></script>
+<script src="/static/assets/js/plugins/choices.min.js"></script>
+<script src="/static/assets/js/plugins/rellax.min.js"></script>
+<script src="/static/assets/js/plugins/tilt.min.js"></script>
+<script src="/static/assets/js/plugins/choices.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="/static/assets/js/soft-design-system.min.js?v=1.0.1" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+
+<script>
+  if (document.querySelector(".datepicker")) {
+    flatpickr(".datepicker", {});
+  }
+</script>
+
+<script>
+  $(document).ready(function () {
+    const token = new ClipboardJS("#btn");
+    modal = new bootstrap.Modal(document.getElementById("modal"));
+    $("#email-input").keydown((event) => {
+      if (event.keyCode == 48) {
+        $("#sample-link").removeClass("disabled")
+      }
+    })
+    $("#sample-link").click((event) => {
+      window.location.href = `/download-sample?email=${$("#email-input").val()}`;
+    })
+
+    $("#btn-demo").on("click", (e) => {
+      e.preventDefault();
+      need = e.target.getAttribute("data-plan-id");
+      $("#loader").hide();
+      $("#token-container").hide();
+      $("#result-container").empty();
+      modal.show();
+      $("#modal-form").on("submit", (e) => {
+        e.preventDefault();
+        $("#result-container").empty();
+        email = $("input[name=email]").val();
+        $("#loader").show();
+        $.post("/register", {
+          email,
+          need,
+        })
+          .done((data) => {
+            $("#result-container").text(data["msg"]);
+            if (data["token"]) {
+              $("#token-container").show();
+              $("#token").text(data["token"]);
+            }
+          })
+          .fail((data) => {
+            $("#result-container").text("failed please try again");
+          })
+          .always((data) => {
+            $("#loader").hide();
+          });
+      });
+    });
+  });
+  $(document).ready(function () {
+    $("#fullname").keydown((event) => {
+      if (event.keyCode == 13) {
+        $.ajax({
+          url: "/search",
+          method: "GET",
+          headers: {
+            "X-API-Key": "{{default_token}}",
+          },
+          data: {
+            fullname: $("#fullname").val(),
+            citizenship: $("#citizenship").val(),
+          },
+        })
+          .done((response) => {
+            
+            // build main card
+            let template = $("#main-card-template").html();
+            let text = Mustache.render(template, response[0]);
+            $("#result-container").html(text);
+
+            // build small cards
+            text = "";
+            for (let index = 1; index < 5; index++) {
+              const element = response[index];
+              template = $("#sm-card-template").html();
+              text += Mustache.render(template, element);
+            }
+            $("#small-cards-container").html(text);
+
+            // show small card on click
+            $(".sm-card").on('click', (event) => {
+              let txt = Mustache.render($("#main-card-template").html(), response[event.target.getAttribute("data-key")])
+              $("#result-container").empty()
+              $("#result-container").html(txt)
+            })
+
+            $("#box").show().fadeIn(300)
+          })
+          .fail((response) => {
+            console.error("there is a roblem");
+          })
+          .progress(() => {
+            console.log("on pregress");
+          });
+      }
+    });
+    $("#basic-addon").click((event) => {
+      const names = $("#fullname").val();
+      $.ajax({
+        url: "/search",
+        method: "GET",
+        headers: {
+          "X-API-Key": "{{default_token}}",
+        },
+        data: {
+          fullname: $("#fullname").val(),
+          citizenship: $("#citizenship").val(),
+        },
+      })
+        .done((response) => {
+          console.log(response);
+          // extracting data
+          const data = sanitize_data(response?.persons);
+          console.log(data);
+          // build main card
+          let template = $("#main-card-template").html();
+          let text = Mustache.render(template, response[0]);
+          $("#result-container").html(text);
+
+          // build small cards
+          text = "";
+          for (let index = 1; index < 5; index++) {
+            const element = data[index];
+            template = $("#sm-card-template").html();
+            text += Mustache.render(template, element);
+          }
+          $("#small-cards-container").html(text);
+
+          // show small card on click
+          $(".sm-card").on('click', (event) => {
+            let txt = Mustache.render($("#main-card-template").html(), data[event.target.getAttribute("data-key")])
+            $("#result-container").empty()
+            $("#result-container").html(txt)
+          })
+
+          $("#box").show().fadeIn(300)
+        })
+        .fail((response) => {
+          console.error("there is a roblem");
+        })
+        .progress(() => {
+          console.log("on pregress");
+        });
+    })
+  });
+
+</script>
+<script type="text/javascript">
+  if (document.getElementById("state1")) {
+    const countUp = new CountUp(
+      "state1",
+      document.getElementById("state1").getAttribute("countTo")
+    );
+    if (!countUp.error) {
+      countUp.start();
+    } else {
+      console.error(countUp.error);
+    }
+  }
+  if (document.getElementById("state2")) {
+    const countUp1 = new CountUp(
+      "state2",
+      document.getElementById("state2").getAttribute("countTo")
+    );
+    if (!countUp1.error) {
+      countUp1.start();
+    } else {
+      console.error(countUp1.error);
+    }
+  }
+  if (document.getElementById("state3")) {
+    const countUp2 = new CountUp(
+      "state3",
+      document.getElementById("state3").getAttribute("countTo")
+    );
+    if (!countUp2.error) {
+      countUp2.start();
+    } else {
+      console.error(countUp2.error);
+    }
+  }
+</script>
+
+{% endblock javascripts %}

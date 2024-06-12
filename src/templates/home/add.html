@@ -1,0 +1,629 @@
+{% extends 'layouts/base-presentation.html' %} {% block title %} Edit PEP
+{%endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+{% endblock stylesheets %} {% block body_class %}index-page {% endblock
+body_class %} {% block content %}
+<header class="header-2">
+  <section class="my-5 py-5">
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-lg-12 shadow-sm mx-auto d-flex justify-content-center flex-column">
+          <h3 class="text-center mb-5">Add a person to DB</h3>
+          <h5 class="text-info">General Informations</h5>
+          <form id="primary-form" class="needs-validation">
+            <div class="row mb-5">
+              <div class="text-center">
+                <button id="btn-submit" type="submit" class="btn bg-gradient-secondary me-2"> Create PEP </button>
+                <div id="msg-container" class="text-center"></div>
+                <button onclick="window.location.reload()" class="btn btn-primary"> reset </button>
+              </div>
+            </div>
+            <div id="main-form">
+              <div class="row mb-5">
+                <div class="col-4">
+                  <label class="form-label">Person Type</label>
+                  <select class="form-control" name="person_type" type="text" required>
+                    <option value="PERSON">PERSON</option>
+                    <option value="ENTITY">ENTITY</option>
+                  </select>
+                </div>
+                <div class="col-4">
+                  <label class="form-label">Category</label>
+                  <input class="form-control" name="category" type="text" id="categoryInput">
+                </div>
+                <div class="col-4">
+                  <label class="form-label">Gender</label>
+                  <select class="form-control" name="gender">
+                    <option value="Unkown">Unkown</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+                <div class="col-4">
+                  <label class="form-label w-100 h-50" for="uploader">
+                    Photo
+                    <p class="mb-3"></p>
+                    <div class="d-flex">
+                      <div id="photo-box" class="d-none">
+                        <img height="50px" src="http://localhost:5000/images/chawki.png" alt="">
+                      </div>
+                      <div style="height: 50px;"
+                        class="ms-1 rounded-1 border w-100 d-flex justify-content-center align-items-center">
+                        <div>
+                          Click Here to select image
+                        </div>
+                      </div>
+                    </div>
+                  </label>
+                  <input class="form-control" name="image_url" type="text" hidden>
+                </div>
+                <div class="col-4">
+                  <label class="form-label">Birthdate</label>
+                  <input class="form-control" name="birth_date" type="date">
+                </div>
+                <div class="col-4">
+                  <label class="form-label">Birthplace</label>
+                  <input class="form-control" name="birth_place" type="text">
+                </div>
+                <div class="col-4">
+                  <label for="form-label">Type</label>
+                  <select class="form-control" name="sanction_list_type">
+                    <option value="PEP">PEP</option>
+                    <option value="SANCTIONNED">SANCTIONED</option>
+                  </select>
+                </div>
+                <div class="col-4">
+                  <label class="form-label">Description</label>
+                  <textarea class="form-control" name="description" cols="30" rows="1"></textarea>
+                </div>
+                <div class="col-4 d-flex justify-content-center flex-column">
+                  <div class="d-flex justify-content-center form-switch">
+                    <input class="form-check-input" name="deceased" type="checkbox" role="switch"
+                      id="flexSwitchCheckDeceased">
+                    <label class="form-check-label" for="flexSwitchCheckDeceased">Deceased</label>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <label for="form-label">Country</label>
+                  <input class="form-control" name="country" id="countryInput" type="text">
+                </div>
+                <div class="col-4">
+                  <label class="form-label" for="links">Links</label>
+                  <input class="form-control" name="source_name" value="" type="text" id="links" />
+                </div>
+                <div class="col-4">
+                  <label class="form-label">Profile Notes</label>
+                  <input class="form-control" type="text" name="profile_notes" />
+                </div>
+                <div class="col-4">
+                  <label class="form-label">Action</label>
+                  <input class="form-control" type="text" name="action" />
+                </div>
+                <div class="col-4">
+                  <label class="form-label">Active Status</label>
+                  <input class="form-control" type="text" name="active_status" />
+                </div>
+                <div class="col-4">
+                  <label class="form-label">Keywords</label>
+                  <input class="form-control" name="keyword" value="" type="text" id="keywords">
+                </div>
+              </div>
+            </div>
+            <div id="names-container" class="row mb-5">
+              <div class="d-flex justify-content-between">
+                <h5 class="text-info">Names</h5>
+                <button class="btn btn-warning btn-add">Add</button>
+              </div>
+            </div>
+            <div id="adresses-container" class="row mb-5">
+              <div class="d-flex justify-content-between">
+                <h5 class="text-info">Adresses</h5>
+                <button class="btn btn-warning btn-add">Add</button>
+              </div>
+            </div>
+            <div id="sanctions-container" class="row mb-5">
+              <div class="d-flex justify-content-between">
+                <h5 class="text-info">Sanctions</h5>
+                <button class="btn btn-warning btn-add">Add</button>
+              </div>
+            </div>
+            <div id="identities-container" class="row mb-5">
+              <div class="d-flex justify-content-between">
+                <h5 class="text-info">Identities</h5>
+                <button class="btn btn-warning btn-add">Add</button>
+              </div>
+            </div>
+            <div id="person-roles-container" class="row mb-5">
+              <div class="d-flex justify-content-between">
+                <h5 class="text-info">Person Roles</h5>
+                <button class="btn btn-warning btn-add">Add</button>
+              </div>
+            </div>
+            <input id="uploader" class="form-control" name="photo" placeholder="Photo" type="file" max="1" hidden>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form Templates -->
+  <template id="name-form">
+    <div class="mb-3 name-form form-group">
+      <div class="border p-3">
+        <div class="d-flex justify-content-end">
+          <button type="button" id="btn-dele" class="btn btn-danger btn-delete rounded-circle px-2 py-1"><i
+              class="bi bi-x-circle fs-3"></i></button>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <label class="form-label">First Name</label>
+            <input class="form-control" type="text" name="first_name" required>
+          </div>
+          <div class="col-4">
+            <label class="form-label">Last Name</label>
+            <input class="form-control" type="text" name="last_name" required>
+          </div>
+          <div class="col-4">
+            <label class="form-label">Whole Name</label>
+            <input class="form-control" type="text" name="whole_name" required>
+          </div>
+          <div class="col-4">
+            <label class="form-label">Name Type</label>
+            <select class="form-control" name="name_type">
+              <option value="Primary">Primary</option>
+              <option value="Secondary">Secondary</option>
+            </select>
+          </div>
+          <div class="col-4">
+            <label class="form-label">Middle Name</label>
+            <input class="form-control" type="text" name="middle_name">
+          </div>
+          <div class="col-4">
+            <label class="form-label">Original Script Name</label>
+            <input class="form-control" type="text" name="original_script_name">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="adress-form">
+    <form class="mb-3 adress-form form-group">
+      <div class="border p-3">
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-danger btn-delete rounded-circle px-2 py-1"><i
+              class="bi bi-x-circle fs-3"></i></button>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <label class="form-label">City</label>
+            <input class="form-control" type="text" name="city">
+          </div>
+          <div class="col-4">
+            <label class="form-label">Country </label>
+            <input class="form-control" type="text" name="country">
+          </div>
+          <div class="col-4">
+            <label class="form-label">Number</label>
+            <input class="form-control" type="text" name="number">
+          </div>
+          <div class="col-4">
+            <label class="form-label">State</label>
+            <input class="form-control" type="text" name="state">
+          </div>
+          <div class="col-4">
+            <label class="form-label">Street</label>
+            <input class="form-control" type="text" name="street">
+          </div>
+          <div class="col-4">
+            <label class="form-label">Zipcode </label>
+            <input class="form-control" type="text" name="zip_code">
+          </div>
+          <div class="col-12">
+            <label class="form-label">Other </label>
+            <input class="form-control" type="text" name="other">
+          </div>
+        </div>
+      </div>
+    </form>
+  </template>
+
+  <template id="sanction-form">
+    <form class="mb-3 sanction-form form-group">
+      <div class="border p-3">
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-danger btn-delete rounded-circle px-2 py-1"><i
+              class="bi bi-x-circle fs-3"></i></button>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <label class="form-label">Sanction Name</label>
+            <input list="sanctionSamples" class="form-control" type="text" name="sanction_name">
+            <datalist id="sanctionSamples">
+              <option value="Infraction Terroriste"></option>
+            </datalist>
+          </div>
+          <div class="col-4">
+            <label class="form-label">Sanction Description</label>
+            <input class="form-control" type="text" name="sanction_description">
+          </div>
+          <div class="col-4">
+            <label class="form-label">Sanction Begin Date</label>
+            <input class="form-control" type="date" name="sanction_begin_date">
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </template>
+
+  <template id="identity-form">
+    <div class="mb-3 identity-form form-group">
+      <div class="border p-3">
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-danger btn-delete rounded-circle px-2 py-1"><i
+              class="bi bi-x-circle fs-3"></i></button>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label class="form-label">Identification Type</label>
+            <input list="IdentitiesList" class="form-control" type="text" name="identification_type" required>
+            <datalist id="IdentitiesList">
+              <option value="ID CARD">
+              <option value="PASSPORT">
+              <option value="Matricule Fiscale">
+            </datalist>
+          </div>
+          <div class="col-6">
+            <label class="form-label">Identification Value</label>
+            <input class="form-control" type="text" name="identification_value" required>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="person-role-form">
+    <div class="mb-3 person-role-form form-group">
+      <div class="border p-3">
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-danger btn-delete rounded-circle px-2 py-1"><i
+              class="bi bi-x-circle fs-3"></i></button>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label class="form-label">Occupation Title</label>
+            <input class="form-control" type="text" name="occupation_title" required>
+          </div>
+          <div class="col-6">
+            <label class="form-label">Role Type</label>
+            <input class="form-control" type="text" name="role_type">
+          </div>
+          <div class="col-6">
+            <label class="form-label">Occupation Begin Date</label>
+            <input class="form-control" type="date" name="occupation_begin_date">
+          </div>
+          <div class="col-6">
+            <label class="form-label">Occupation End Date</label>
+            <input class="form-control" type="date" name="occupation_end_date">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  {% endblock content %}
+
+  <!-- Specific JS goes HERE -->
+  {% block javascripts %}
+
+  <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="/static/assets/js/soft-design-system.min.js?v=1.0.1" type="text/javascript" ></script>
+  <script src="/static/assets/js/callbacks.js" type="module"></script>
+  <script>
+    const CATEGORIES = [
+      "CRIME - FINANCIAL",
+      "LEGAL",
+      "CRIME - OTHER",
+      "TRADE UNION",
+      "WEBSITE",
+      "CRIME - WAR",
+      "VESSEL",
+      "CRIME - TERROR",
+      "CRIME - ORGANIZED",
+      "RELIGION",
+      "DIPLOMAT",
+      "POLITICAL INDIVIDUAL",
+      "EMBARGO",
+      "INDIVIDUAL",
+      "CRIME - NARCOTICS",
+      "ORGANISATION",
+      "BANK",
+      "POLITICAL PARTY",
+      "MILITARY",
+      "CORPORATE",
+      "NONCONVICTION TERROR",
+      "EMBARGO VESSEL"
+    ]
+
+    const COUNTRIES = [
+      'Afghanistan',
+      'Albania',
+      'Algeria',
+      'American Samoa',
+      'Andorra, Principality of',
+      'Angola',
+      'Anguilla',
+      'Antarctica',
+      'Antigua and Barbuda',
+      'Argentina',
+      'Armenia',
+      'Aruba',
+      'Australia',
+      'Austria',
+      'Azerbaijan or Azerbaidjan (Former Azerbaijan Soviet Socialist Republic)',
+      'Bahamas, Commonwealth of The',
+      'Bahrain, Kingdom of (Former Dilmun)',
+      'Bangladesh (Former East Pakistan)',
+      'Barbados',
+      'Belarus (Former Belorussian [Byelorussian] Soviet Socialist Republic)',
+      'Belgium',
+      'Belize (Former British Honduras)',
+      'Benin (Former Dahomey)',
+      'Bermuda',
+      'Bhutan, Kingdom of',
+      'Bolivia',
+      'Bosnia and Herzegovina',
+      'Botswana (Former Bechuanaland)',
+      'Bouvet Island (Territory of Norway)',
+      'Brazil',
+      'British Indian Ocean Territory (BIOT)',
+      'Brunei (Negara Brunei Darussalam)',
+      'Bulgaria',
+      'Burkina Faso (Former Upper Volta)',
+      'Burundi (Former Urundi)',
+      'Cambodia, Kingdom of (Former Khmer Republic, Kampuchea Republic)',
+      'Cameroon (Former French Cameroon)',
+      'Canada',
+      'Cape Verde',
+      'Cayman Islands',
+      'Central African Republic',
+      'Chad',
+      'Chile',
+      'China',
+      'Christmas Island',
+      'Cocos (Keeling) Islands',
+      'Colombia',
+      'Comoros, Union of the',
+      'Congo, Democratic Republic of the (Former Zaire)',
+      'Congo, Republic of the',
+      'Cook Islands (Former Harvey Islands)',
+      'Costa Rica',
+      'Cote D"Ivoire(Former Ivory Coast)',
+      'Croatia (Hrvatska)',
+      'Cuba',
+      'Cyprus',
+      'Czech Republic',
+      'Czechoslavakia (Former) See CZ Czech Republic or Slovakia',
+      'Denmark',
+      'Djibouti (Former French Territory of the Afars and Issas, French Somaliland)',
+      'Dominica',
+      'Dominican Republic',
+      'East Timor (Former Portuguese Timor)',
+      'Ecuador',
+      'Egypt (Former United Arab Republic - with Syria)',
+      'El Salvador',
+      'Equatorial Guinea (Former Spanish Guinea)',
+      'Eritrea (Former Eritrea Autonomous Region in Ethiopia)',
+      'Estonia (Former Estonian Soviet Socialist Republic)',
+      'Ethiopia (Former Abyssinia, Italian East Africa)',
+      'Falkland Islands (Islas Malvinas)',
+      'Faroe Islands',
+      'Fiji',
+      'Finland',
+      'France',
+      'French Guiana or French Guyana',
+      'French Polynesia (Former French Colony of Oceania)',
+      'French Southern Territories and Antarctic Lands',
+      'Gabon (Gabonese Republic)',
+      'Gambia, The',
+      'Georgia (Former Georgian Soviet Socialist Republic)',
+      'Germany',
+      'Ghana (Former Gold Coast)',
+      'Gibraltar',
+      'Great Britain (United Kingdom)',
+      'Greece',
+      'Greenland',
+      'Grenada',
+      'Guadeloupe',
+      'Guam',
+      'Guatemala',
+      'Guinea (Former French Guinea)',
+      'Guinea-Bissau (Former Portuguese Guinea)',
+      'Guyana (Former British Guiana)',
+      'Haiti',
+      'Heard Island and McDonald Islands (Territory of Australia)',
+      'Holy See (Vatican City State)',
+      'Honduras',
+      'Hong Kong',
+      'Hungary',
+      'Iceland',
+      'India',
+      'Indonesia (Former Netherlands East Indies; Dutch East Indies)',
+      'Iran, Islamic Republic of',
+      'Iraq',
+      'Ireland',
+      'Israel',
+      'Italy',
+      'Jamaica',
+      'Japan',
+      'Jordan (Former Transjordan)',
+      'Kazakstan or Kazakhstan (Former Kazakh Soviet Socialist Republic)',
+      'Kenya (Former British East Africa)',
+      'Kiribati (Pronounced keer-ree-bahss) (Former Gilbert Islands)',
+      'Korea, Democratic People"s Republic of(North Korea)',
+      'Korea, Republic of (South Korea)',
+      'Kuwait',
+      'Kyrgyzstan (Kyrgyz Republic) (Former Kirghiz Soviet Socialist Republic)',
+      'Lao People"s Democratic Republic(Laos)',
+      'Latvia (Former Latvian Soviet Socialist Republic)',
+      'Lebanon',
+      'Lesotho (Former Basutoland)',
+      'Liberia',
+      'Libya (Libyan Arab Jamahiriya)',
+      'Liechtenstein',
+      'Lithuania (Former Lithuanian Soviet Socialist Republic)',
+      'Luxembourg',
+      'Macau',
+      'Macedonia, The Former Yugoslav Republic of',
+      'Madagascar (Former Malagasy Republic)',
+      'Malawi (Former British Central African Protectorate, Nyasaland)',
+      'Malaysia',
+      'Maldives',
+      'Mali (Former French Sudan and Sudanese Republic)',
+      'Malta',
+      'Marshall Islands (Former Marshall Islands District - Trust Territory of the Pacific Islands)',
+      'Martinique (French)',
+      'Mauritania',
+      'Mauritius',
+      'Mayotte (Territorial Collectivity of Mayotte)',
+      'Mexico',
+      'Micronesia, Federated States of (Former Ponape, Truk, and Yap Districts - Trust Territory of the Pacific Islands)',
+      'Moldova, Republic of',
+      'Monaco, Principality of',
+      'Mongolia (Former Outer Mongolia)',
+      'Montserrat',
+      'Morocco',
+      'Mozambique (Former Portuguese East Africa)',
+      'Myanmar, Union of (Former Burma)',
+      'Namibia (Former German Southwest Africa, South-West Africa)',
+      'Nauru (Former Pleasant Island)',
+      'Nepal',
+      'Netherlands',
+      'Netherlands Antilles (Former Curacao and Dependencies)',
+      'New Caledonia',
+      'New Zealand (Aotearoa)',
+      'Nicaragua',
+      'Niger',
+      'Nigeria',
+      'Niue (Former Savage Island)',
+      'Norfolk Island',
+      'Northern Mariana Islands (Former Mariana Islands District - Trust Territory of the Pacific Islands)',
+      'Norway',
+      'Oman, Sultanate of (Former Muscat and Oman)',
+      'Pakistan (Former West Pakistan)',
+      'Palau (Former Palau District - Trust Terriroty of the Pacific Islands)',
+      'Palestinian State (Proposed)',
+      'Panama',
+      'Papua New Guinea (Former Territory of Papua and New Guinea)',
+      'Paraguay',
+      'Peru',
+      'Philippines',
+      'Pitcairn Island',
+      'Poland',
+      'Portugal',
+      'Puerto Rico',
+      'Qatar, State of',
+      'Reunion (French) (Former Bourbon Island)',
+      'Romania',
+      'Russia - USSR (Former Russian Empire, Union of Soviet Socialist Republics, Russian Soviet Federative Socialist Republic) Now RU - Russian Federation',
+      'Russian Federation',
+      'Rwanda (Rwandese Republic) (Former Ruanda)',
+      'Saint Helena',
+      'Saint Kitts and Nevis (Former Federation of Saint Christopher and Nevis)',
+      'Saint Lucia',
+      'Saint Pierre and Miquelon',
+      'Saint Vincent and the Grenadines',
+      'Samoa (Former Western Samoa)',
+      'San Marino',
+      'Sao Tome and Principe',
+      'Saudi Arabia',
+      'Serbia, Republic of',
+      'Senegal',
+      'Seychelles',
+      'Sierra Leone',
+      'Singapore',
+      'Slovakia',
+      'Slovenia',
+      'Solomon Islands (Former British Solomon Islands)',
+      'Somalia (Former Somali Republic, Somali Democratic Republic)',
+      'South Africa (Former Union of South Africa)',
+      'South Georgia and the South Sandwich Islands',
+      'Spain',
+      'Sri Lanka (Former Serendib, Ceylon)',
+      'Sudan (Former Anglo-Egyptian Sudan)',
+      'Suriname (Former Netherlands Guiana, Dutch Guiana)',
+      'Svalbard (Spitzbergen) and Jan Mayen Islands',
+      'Swaziland, Kingdom of',
+      'Sweden',
+      'Switzerland',
+      'Syria (Syrian Arab Republic) (Former United Arab Republic - with Egypt)',
+      'Taiwan (Former Formosa)',
+      'Tajikistan (Former Tajik Soviet Socialist Republic)',
+      'Tanzania, United Republic of (Former United Republic of Tanganyika and Zanzibar)',
+      'Thailand (Former Siam)',
+      'Togo (Former French Togoland)',
+      'Tokelau',
+      'Tonga, Kingdom of (Former Friendly Islands)',
+      'Trinidad and Tobago',
+      'Tromelin Island',
+      'Tunisia',
+      'Turkey',
+      'Turkmenistan (Former Turkmen Soviet Socialist Republic)',
+      'Turks and Caicos Islands',
+      'Tuvalu (Former Ellice Islands)',
+      'Uganda, Republic of',
+      'Ukraine (Former Ukrainian National Republic, Ukrainian State, Ukrainian Soviet Socialist Republic)',
+      'United Arab Emirates (UAE) (Former Trucial Oman, Trucial States)',
+      'United Kingdom (Great Britain / UK)',
+      'United States',
+      'United States Minor Outlying Islands',
+      'Uruguay, Oriental Republic of (Former Banda Oriental, Cisplatine Province)',
+      'Uzbekistan (Former UZbek Soviet Socialist Republic)',
+      'Vanuatu (Former New Hebrides)',
+      'Vatican City State (Holy See)',
+      'Venezuela',
+      'Vietnam',
+      'Virgin Islands, British',
+      'Virgin Islands, United States (Former Danish West Indies)',
+      'Wallis and Futuna Islands',
+      'Western Sahara (Former Spanish Sahara)',
+      'Yemen',
+      'Yugoslavia',
+      'Zaire (Former Congo Free State, Belgian Congo, Congo/Leopoldville, Congo/Kinshasa, Zaire) Now CD - Congo, Democratic Republic of the',
+      'Zambia, Republic of (Former Northern Rhodesia)',
+      'Zimbabwe, Republic of (Former Southern Rhodesia, Rhodesia)',
+    ]
+
+    $(document).ready(() => {
+      const multiInputs = ["#links", "#keywords"]
+      multiInputs.forEach((item) => {
+        new Tagify(document.querySelector(item))
+      })
+
+      const multiInputsWithChoices = ["#countryInput", "#categoryInput"]
+      multiInputsWithChoices.forEach((input, index) => {
+        const choices = (index == 0) ? COUNTRIES : CATEGORIES
+        tagify = new Tagify(document.querySelector(input), {
+          whitelist: choices,
+          dropdown: {
+            maxItems: 20,
+            classname: "tags-look",
+            enabled: 0,
+            closeOnSelect: false
+          }
+        })
+      })
+
+    })
+  </script>
+  {% endblock javascripts %}
+
+</header>

@@ -1,0 +1,37 @@
+{% extends 'layouts/base-presentation.html' %} {% block title %} Presentation {%endblock title %}
+{% block stylesheets %}
+{% endblock stylesheets %} {% block body_class %} index-page {% endblock body_class %}
+
+{% block content %}
+<div class="container p-3  pt-5 mt-5">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">name</th>
+            <th scope="col">citizenship</th>
+            <th scope="col">birthdate</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for row in rows %}
+          <tr>
+            <td>{{ row['name'] }}</td>
+            <td>{{ row['citizenship'] }}</td>
+            <td>{{ row['birthdate'] }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock content %}
+
+{% block javascripts %}
+<script src="/static/assets/js/plugins/countup.min.js"></script>
+<script src="/static/assets/js/plugins/choices.min.js"></script>
+<script src="/static/assets/js/plugins/rellax.min.js"></script>
+<script src="/static/assets/js/plugins/tilt.min.js"></script>
+<script src="/static/assets/js/plugins/choices.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+{% endblock javascripts %}

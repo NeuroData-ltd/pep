@@ -1,0 +1,258 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Sanction Checks and PEP Screenings API",
+        "description": "Sanction checks and PEP screenings are processes that companies use to identify individuals or organizations that may be associated with criminal or illegal activities, terrorism, or politically exposed persons (PEPs).",
+        "contact": {
+            "email": "contact@groupeneurodata.com"
+        },
+        "version": "1.0.20"
+    },
+    "servers": [{
+        "url": "https://pep.groupeneurodata.com/v1",
+        "description": "Main (production) server"
+    }],
+    "tags": [{
+        "name": "Plan",
+        "description": "Operations available only for free trial plan"
+    }],
+    "paths": {
+        "/search": {
+            "get": {
+                "summary": "list of entities related to illegal activity or PEPs.",
+                "description": "By passing in the appropriate options, you can check if an entity (organization or individual) i\n",
+                "operationId": "searchEntities",
+                "parameters": [{
+                        "name": "firstname",
+                        "in": "query",
+                        "description": "The first name of the person being searched for",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "Guest"
+                        }
+                    },
+                    {
+                        "name": "lastname",
+                        "in": "query",
+                        "description": "The last name of the person being searched for",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "Guested"
+                        }
+                    },
+                    {
+                        "name": "citizenship",
+                        "in": "query",
+                        "description": "The citizenship of the person being searched for",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "TN"
+                        }
+                    },
+                    {
+                        "name": "birthdate",
+                        "in": "query",
+                        "description": "The birthdate of the person being searched for",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2023-05-12"
+                        }
+                    },
+                    {
+                        "name": "result_limit",
+                        "in": "query",
+                        "description": "The number of top matching results to be returned",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "maximum": 30,
+                            "minimum": 1,
+                            "type": "integer",
+                            "format": "int64",
+                            "example": 15
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "search results matching criteria",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/inline_response_200"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "bad input parameter"
+                    },
+                    "401": {
+                        "description": "the API key provided is invalid"
+                    },
+                    "429": {
+                        "description": "rate limit surpassed"
+                    }
+                },
+                "security": [{
+                    "ApiKeyAuth": []
+                }],
+                "x-codeSamples": [{
+                        "lang": "Node js",
+                        "source": "const request = require('request');\n\nconst options = {\n  method: 'GET',\n  url: 'https://pep.groupeneurodata.com/v1/search',\n  qs: {\n    firstname: 'SOME_STRING_VALUE',\n    lastname: 'SOME_STRING_VALUE',\n    citizenship: 'TN',\n    birthdate: 'SOME_STRING_VALUE',\n    result_limit: 'SOME_INTEGER_VALUE'\n  },\n  headers: {'X-API-KEY': 'REPLACE_KEY_VALUE'}\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+                    },
+                    {
+                        "lang": "Curl",
+                        "source": "curl --request GET \\\n  --url 'https://pep.groupeneurodata.com/v1/search?firstname=SOME_STRING_VALUE&lastname=SOME_STRING_VALUE&citizenship=TN&birthdate=SOME_STRING_VALUE&result_limit=SOME_INTEGER_VALUE' \\\n  --header 'X-API-KEY: REPLACE_KEY_VALUE'"
+                    },
+                    {
+                        "lang": "Python",
+                        "source": "import http.client\n\nconn = http.client.HTTPSConnection(\"pep.groupeneurodata.com\")\n\nheaders = { 'X-API-KEY': \"REPLACE_KEY_VALUE\" }\n\nconn.request(\"GET\", \"/v1/search?firstname=SOME_STRING_VALUE&lastname=SOME_STRING_VALUE&citizenship=TN&birthdate=SOME_STRING_VALUE&result_limit=SOME_INTEGER_VALUE\", headers=headers)\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
+                    },
+                    {
+                        "lang": "Php",
+                        "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://pep.groupeneurodata.com/v1/search');\n$request->setMethod(HTTP_METH_GET);\n\n$request->setQueryData([\n  'firstname' => 'SOME_STRING_VALUE',\n  'lastname' => 'SOME_STRING_VALUE',\n  'citizenship' => 'TN',\n  'birthdate' => 'SOME_STRING_VALUE',\n  'result_limit' => 'SOME_INTEGER_VALUE'\n]);\n\n$request->setHeaders([\n  'X-API-KEY' => 'REPLACE_KEY_VALUE'\n]);\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+                    }
+                ]
+            }
+        },
+        "/download": {
+            "get": {
+                "summary": "The latest updated list of santions and PEPs",
+                "description": "Get the latest updated list of sanctions and PEPs by this endpoint",
+                "operationId": "downloadEntities",
+                "responses": {
+                    "200": {
+                        "description": "download succefully",
+                        "content": "application/vnd.ms-excel"
+                    },
+                    "401": {
+                        "description": "the API key provided is invalid"
+                    }
+                },
+                "security": [{
+                    "ApiTokenAuth": []
+                }],
+                "x-codeSamples": [{
+                    "lang": "wget",
+                    "source": "wget -d --header='X-Auth-Token: xxxx-xxxx-xxxx-xxxx' http://pep.groupeneurodata.com/v1/download"
+                }]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "inline_response_200": {
+                "type": "object",
+                "properties": {
+                    "full_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "given_name": {
+                        "type": "string"
+                    },
+                    "alias_names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "date_of_birth": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "place_of_birth": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "epouse": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "citizenship": {
+                        "type": "string"
+                    },
+                    "entity_type": {
+                        "type": "string"
+                    },
+                    "gender": {
+                        "type": "string"
+                    },
+                    "occupations": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "positions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "political_parties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "source": {
+                        "type": "string"
+                    },
+                    "source_type": {
+                        "type": "string"
+                    },
+                    "source_links": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "pep_type": {
+                        "type": "string"
+                    },
+                    "matching_percent": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "ApiKeyAuth": {
+                "type": "apiKey",
+                "name": "X-API-KEY",
+                "in": "header"
+            },
+            "ApiTokenAuth": {
+                "type": "apiKey",
+                "name": "X-Auth-Token",
+                "in": "header"
+            }
+        }
+    }
+}
