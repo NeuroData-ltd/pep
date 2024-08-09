@@ -6,6 +6,12 @@
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 {% endblock stylesheets %} {% block body_class %}index-page {% endblock
 body_class %} {% block content %}
+<style>
+  .form-required:after {
+    content: "*";
+    color: red;
+  }
+</style>
 <header class="header-2">
   <section class="my-5 py-5">
     <div class="container py-4">
@@ -17,7 +23,7 @@ body_class %} {% block content %}
             <div id="main-form">
               <div class="row mb-5">
                 <div class="col-4">
-                  <label class="form-label">Person Type</label>
+                  <label class="form-label form-required">Person Type</label>
                   <select class="form-control" name="person_type" type="text" required>
                     <option value="PERSON">PERSON</option>
                     <option value="ENTITY">ENTITY</option>
@@ -28,8 +34,8 @@ body_class %} {% block content %}
                   <input class="form-control" name="category" type="text" id="categoryInput">
                 </div>
                 <div class="col-4">
-                  <label class="form-label">Gender</label>
-                  <select class="form-control" name="gender">
+                  <label class="form-label form-required">Gender</label>
+                  <select class="form-control" name="gender" required>
                     <option value="Unkown">Unkown</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -80,12 +86,12 @@ body_class %} {% block content %}
                   </div>
                 </div>
                 <div class="col-4">
-                  <label for="form-label">Country</label>
-                  <input class="form-control" name="country" id="countryInput" type="text">
+                  <label class="form-required form-label">Country</label>
+                  <input class="form-control" name="country" id="countryInput" type="text" required>
                 </div>
                 <div class="col-4">
-                  <label class="form-label" for="links">Links</label>
-                  <input class="form-control" name="source_name" value="" type="text" id="links" />
+                  <label class="form-label form-required" for="links">Links</label>
+                  <input class="form-control" name="source_name" value="" type="text" id="links" required />
                 </div>
                 <div class="col-4">
                   <label class="form-label">Profile Notes</label>
@@ -140,7 +146,7 @@ body_class %} {% block content %}
               <div class="text-center">
                 <button id="btn-submit" type="submit" class="btn bg-gradient-secondary me-2"> Create PEP </button>
                 <div id="msg-container" class="text-center"></div>
-                <a href="/add-xg4MOkc88x"  class="btn btn-primary"> reset </a>
+                <a href="/add-xg4MOkc88x" class="btn btn-primary"> reset </a>
               </div>
             </div>
           </form>
@@ -160,15 +166,15 @@ body_class %} {% block content %}
         </div>
         <div class="row">
           <div class="col-4">
-            <label class="form-label">First Name</label>
+            <label class="form-label form-required">First Name</label>
             <input class="form-control" type="text" name="first_name" required>
           </div>
           <div class="col-4">
-            <label class="form-label">Last Name</label>
+            <label class="form-label form-required">Last Name</label>
             <input class="form-control" type="text" name="last_name" required>
           </div>
           <div class="col-4">
-            <label class="form-label">Whole Name</label>
+            <label class="form-label form-required">Whole Name</label>
             <input class="form-control" type="text" name="whole_name" required>
           </div>
           <div class="col-4">
@@ -225,7 +231,7 @@ body_class %} {% block content %}
           </div>
           <div class="col-12">
             <label class="form-label">Other </label>
-            <input class="form-control" type="text" name="other">
+            <input class="form-control" type="text" name="other" required>
           </div>
         </div>
       </div>
@@ -270,7 +276,7 @@ body_class %} {% block content %}
         </div>
         <div class="row">
           <div class="col-6">
-            <label class="form-label">Identification Type</label>
+            <label class="form-label form-required">Identification Type</label>
             <input list="IdentitiesList" class="form-control" type="text" name="identification_type" required>
             <datalist id="IdentitiesList">
               <option value="ID CARD">
@@ -279,7 +285,7 @@ body_class %} {% block content %}
             </datalist>
           </div>
           <div class="col-6">
-            <label class="form-label">Identification Value</label>
+            <label class="form-label form-required">Identification Value</label>
             <input class="form-control" type="text" name="identification_value" required>
           </div>
         </div>
@@ -296,11 +302,11 @@ body_class %} {% block content %}
         </div>
         <div class="row">
           <div class="col-6">
-            <label class="form-label">Occupation Title</label>
+            <label class="form-label form-required">Occupation Title</label>
             <input class="form-control" type="text" name="occupation_title" required>
           </div>
           <div class="col-6">
-            <label class="form-label">Role Type</label>
+            <label class="form-label form-required">Role Type</label>
             <input class="form-control" type="text" name="role_type">
           </div>
           <div class="col-6">
@@ -324,8 +330,9 @@ body_class %} {% block content %}
   <!-- jQuery -->
   <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
   <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <script src="/static/assets/js/soft-design-system.min.js?v=1.0.1" type="text/javascript" ></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="/static/assets/js/soft-design-system.min.js?v=1.0.1" type="text/javascript"></script>
   <script src="/static/assets/js/callbacks.js" type="module"></script>
   <script>
     const CATEGORIES = [
