@@ -42,7 +42,7 @@ $("#primary-form").on('submit', async (e) => {
         item.keyword = (typeof item.keyword !== 'undefined' && item.keyword.length > 0) ? JSON.parse(item.keyword)?.map((obj) => (obj?.value)) : [];
         item.source_name = (typeof item.source_name !== 'undefined' && item.source_name.length > 0) ? JSON.parse(item.source_name).map((obj) => (obj?.value)) : [];
         item.category = (typeof item.category !== 'undefined' && item.category.length > 0) ? JSON.parse(item.category).map((obj) => (obj?.value)) : [];
-        item.country = (typeof item.country !== 'undefined' && item.country.length > 0) ? JSON.parse(item.country).map((obj) => (obj?.value)) : [];
+        item.country_code = (typeof item.country_code !== 'undefined' && item.country_code.length > 0) ? JSON.parse(item.country_code).map((obj) => (obj?.code)) : [];
         return arr
     }))
 
