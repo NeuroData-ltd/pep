@@ -5,3 +5,4 @@ images
 record.log
 access.log
 error.log
+data_*.json

@@ -215,7 +215,7 @@ class Pep(db.Model):
         limit = (datetime.datetime.today() - datetime.timedelta(days)).strftime("%Y-%m-%d, %H:%M:%S")
         data = cls.query.filter(cls.created_on > limit).all()
         return generate_json_rows(data)
-    
+ 
     @classmethod
     def search(cls, fullname, limit):
         query = (
