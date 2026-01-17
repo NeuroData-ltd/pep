@@ -13,6 +13,7 @@ from src.config import config_dict
 import os
 import jwt
 import datetime
+from src.core.utils import split_payload_by_list_code
 
 UPLOAD_DIR = config_dict.get("Production").UPLOAD_DIR
 MEDIA_URL = config_dict.get("Production").MEDIA_URL
@@ -25,76 +26,78 @@ def add():
         return render_template("home/add.html")
     if request.method == "POST":
         try:
-            data = request.get_json()
+            payloads = split_payload_by_list_code(request.get_json())
+            for data in payloads:
 
-            if len(data["person_info"][0]["birth_date"]) > 0:
-                data["person_info"][0]["birth_date"] = datetime.datetime.strptime(
-                    data["person_info"][0]["birth_date"], "%Y-%m-%d"
-                )
-            else:
-                data["person_info"][0]["birth_date"] = None
-            pep = Pep(data=data["person_info"][0])
-            db.session.add(pep)
-            db.session.commit()
-
-            names = []
-            for row in data["names"]:
-                row["person_info"] = pep
-                names.append(Name(row))
-            db.session.add_all(names)
-
-            identities = []
-            for row in data["identities"]:
-                row["person_info"] = pep
-                identities.append(Identity(row))
-            db.session.add_all(identities)
-
-            sanctions = []
-            for row in data["sanctions"]:
-                if len(row["sanction_begin_date"]) > 0:
-                    row["sanction_begin_date"] = datetime.datetime.strptime(
-                        row["sanction_begin_date"], "%Y-%m-%d"
+                if len(data["person_info"][0]["birth_date"]) > 0:
+                    data["person_info"][0]["birth_date"] = datetime.datetime.strptime(
+                        data["person_info"][0]["birth_date"], "%Y-%m-%d"
                     )
                 else:
-                    row["sanction_begin_date"] = None
+                    data["person_info"][0]["birth_date"] = None
+                pep = Pep(data=data["person_info"][0])
+                db.session.add(pep)
+                db.session.commit()
 
-                row["person_info"] = pep
-                sanctions.append(Sanction(row))
-            db.session.add_all(sanctions)
+                names = []
+                for row in data["names"]:
+                    row["person_info"] = pep
+                    names.append(Name(row))
+                db.session.add_all(names)
 
-            person_roles = []
-            for row in data["person_roles"]:
-                if len(row["occupation_begin_date"]) > 0:
-                    date = datetime.datetime.strptime(
-                        row["occupation_begin_date"], "%Y-%m-%d"
-                    )
-                    row["begin_day"] = date.day
-                    row["begin_month"] = date.month
-                    row["begin_year"] = date.year
+                identities = []
+                for row in data["identities"]:
+                    row["person_info"] = pep
+                    identities.append(Identity(row))
+                db.session.add_all(identities)
 
-                if len(row["occupation_end_date"]) > 0:
-                    date = datetime.datetime.strptime(
-                        row["occupation_end_date"], "%Y-%m-%d"
-                    )
-                    row["end_day"] = date.day
-                    row["end_month"] = date.month
-                    row["end_year"] = date.year
+                sanctions = []
+                for row in data["sanctions"]:
+                    if len(row["sanction_begin_date"]) > 0:
+                        row["sanction_begin_date"] = datetime.datetime.strptime(
+                            row["sanction_begin_date"], "%Y-%m-%d"
+                        )
+                    else:
+                        row["sanction_begin_date"] = None
 
-                row.pop("occupation_end_date")
-                row.pop("occupation_begin_date")
-                row["person_info"] = pep
-                person_roles.append(PersonRole(row))
-            db.session.add_all(person_roles)
+                    row["person_info"] = pep
+                    sanctions.append(Sanction(row))
+                db.session.add_all(sanctions)
 
-            adresses = []
-            for row in data["adresses"]:
-                row["person_info"] = pep
-                adresses.append(Adress(row))
-            db.session.add_all(adresses)
+                person_roles = []
+                for row in data["person_roles"]:
+                    if len(row["occupation_begin_date"]) > 0:
+                        date = datetime.datetime.strptime(
+                            row["occupation_begin_date"], "%Y-%m-%d"
+                        )
+                        row["begin_day"] = date.day
+                        row["begin_month"] = date.month
+                        row["begin_year"] = date.year
 
-            db.session.commit()
+                    if len(row["occupation_end_date"]) > 0:
+                        date = datetime.datetime.strptime(
+                            row["occupation_end_date"], "%Y-%m-%d"
+                        )
+                        row["end_day"] = date.day
+                        row["end_month"] = date.month
+                        row["end_year"] = date.year
+
+                    row.pop("occupation_end_date")
+                    row.pop("occupation_begin_date")
+                    row["person_info"] = pep
+                    person_roles.append(PersonRole(row))
+                db.session.add_all(person_roles)
+
+                adresses = []
+                for row in data["adresses"]:
+                    row["person_info"] = pep
+                    adresses.append(Adress(row))
+                db.session.add_all(adresses)
+
+                db.session.commit()
 
         except Exception as e:
+            print(e)
             return jsonify({"message": "Failed To Add"})
 
     return jsonify({"message": "Added Succefully"})

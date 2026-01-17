@@ -441,3 +441,48 @@ def generate_csv_db(records: list[dict]) -> str:
         output = csv.DictWriter(file,fieldnames=AMI_INSURANCE_HEADERS_PEP,delimiter=";",doublequote=True)
         output.writerows(data)
     return filepath
+
+import json
+from copy import deepcopy
+
+def split_payload_by_list_code(payload):
+    """
+    Split a payload based on person_info list_name codes.
+    
+    Args:
+        payload (dict): original payload
+    
+    Returns:
+        list[dict]: list of payloads, one per list_name code
+    """
+    result = []
+    
+    # Iterate over person_info items
+    for person in payload.get('person_info', []):
+        list_name_str = person.get('list_name', '[]')
+        
+        try:
+            # Parse list_name string to JSON
+            list_name_list = json.loads(list_name_str)
+        except json.JSONDecodeError:
+            list_name_list = []
+        
+        # If list_name has multiple entries, create one payload per code
+        if list_name_list:
+            for item in list_name_list:
+                code = item.get('code')
+                if code is not None:
+                    # Deep copy payload
+                    new_payload = deepcopy(payload)
+                    # Update list_name to only code
+                    new_payload['person_info'] = [deepcopy(person)]
+                    new_payload['person_info'][0]['list_name'] = code
+                    result.append(new_payload)
+        else:
+            # No list_name, keep payload as is
+            new_payload = deepcopy(payload)
+            new_payload['person_info'] = [deepcopy(person)]
+            new_payload['person_info'][0]['list_name'] = None
+            result.append(new_payload)
+    
+    return result

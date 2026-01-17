@@ -160,6 +160,7 @@ class Pep(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     action = db.Column(db.String(255), nullable=True)
+    list_name = db.Column(db.Integer, nullable=True)
     active_status = db.Column(db.String(255), nullable=True)
     deceased = db.Column(db.Boolean, nullable=True)
     gender = db.Column(db.String(255))

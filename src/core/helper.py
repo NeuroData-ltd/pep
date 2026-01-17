@@ -7,6 +7,7 @@ def serialize(pep):
 
     ### person details
     data["person"] = {
+        "list_name": pep.list_name,
         "person_type": pep.person_type,
         "sanction_list_type": pep.sanction_list_type,
     }
