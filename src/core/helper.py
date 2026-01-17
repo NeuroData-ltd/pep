@@ -70,9 +70,9 @@ def serialize(pep):
     ]
 
     ### sanctions
-    data["sanctions"] = []
+    data["sanction"] = []
     for sanction in pep.sanctions:
-        data["sanctions"].append(sanction.to_dict())
+        data["sanction"].append(sanction.to_dict())
 
     ### ID Number
     data["id_number_info"] = []
